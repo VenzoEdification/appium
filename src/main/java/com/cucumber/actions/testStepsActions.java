@@ -17,6 +17,8 @@ public class testStepsActions extends loginUI{
 		isVerified = email.isDisplayed() ? true :false;
 		
 		return isVerified;
+
+		//isVerified = email.isDisplayed() ? true :false;
 		
 	}
 
