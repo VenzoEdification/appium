@@ -38,13 +38,22 @@ public class LoginUI extends Report {
 
     public LoginUI() {
 
+//        try {
+//            this.driver = SharedDriver.getCapabilities(); // Initialize the driver
+//        } catch (MalformedURLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        PageFactory.initElements(driver, this);
+
+    }
+
+    public void setupDriver() {
         try {
-            this.driver = SharedDriver.getCapabilities(); // Initialize the driver
+            this.driver = SharedDriver.getCapabilities();
+            PageFactory.initElements(driver, this);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        PageFactory.initElements(driver, this);
-
     }
 
     public LoginUI clickEight(String heading) {

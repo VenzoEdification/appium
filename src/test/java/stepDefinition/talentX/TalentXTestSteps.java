@@ -1,9 +1,11 @@
 package stepDefinition.talentX;
 
+
 import com.aventstack.extentreports.ExtentTest;
 import container.ActionClass;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,11 +21,25 @@ public class TalentXTestSteps extends LoginUI {
     private ActionClass actionClass;
     private ExtentTest test;
 
-    AndroidDriver driver;
-    private LoginUI loginUI;
+//    AndroidDriver driver;
+//    private LoginUI loginUI;
 
-    public TalentXTestSteps() throws MalformedURLException {
-        super();
+    public TalentXTestSteps()  {
+//        super();
+//        System.out.println("Launching TALENTx app...");
+        try {
+            System.out.println("Before super()");
+            // super(); // if no-arg, Java adds it automatically
+            System.out.println("After super()");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed in constructor", e);
+        }
+    }
+
+    @Before
+    public void beforeScenario() {
+        setupDriver();
     }
 
     @Given("the TALENTx app is launched")

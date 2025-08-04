@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.sql.DriverManager;
 import java.util.Objects;
 
-@CucumberOptions(features = {"src/test/resources/talentXFeature"}, glue = {"stepDefinition/talentX"},
+@CucumberOptions(features = {"src/test/resources/talentXFeature"}, glue = {"stepDefinition.talentX"},
         plugin = {"pretty",
 //        "html:Report/cucumberReport.html"
         "html:test-output/SampleReport.html",
