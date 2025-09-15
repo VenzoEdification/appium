@@ -2,6 +2,7 @@ package utils;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -11,6 +12,7 @@ import java.util.Map;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.NumberToTextConverter;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Excelutil {
 
@@ -212,6 +214,38 @@ public class Excelutil {
             default:
                 return "";
         }
-    }
 
+    }
+    public String getImagePathFromExcel(String excelFilePath, String sheetName, String columnName)
+            throws InvalidFormatException, IOException {
+
+        // Get all values from the given column
+        List<String> columnValues = getColumnData(excelFilePath, sheetName, columnName);
+
+        // Check if column is empty
+        if (columnValues == null || columnValues.isEmpty()) {
+            throw new IllegalArgumentException("No values found in column: " + columnName);
+        }
+
+        // Take the first non-empty path
+        String imagePath = null;
+        for (String value : columnValues) {
+            if (value != null && !value.trim().isEmpty()) {
+                imagePath = value.trim();
+                break;
+            }
+        }
+
+        if (imagePath == null) {
+            throw new IllegalArgumentException("No valid image path found in column: " + columnName);
+        }
+
+        // Verify the file exists
+        File imgFile = new File(imagePath);
+        if (!imgFile.exists()) {
+            throw new IOException("Image file not found at path: " + imagePath);
+        }
+
+        return imgFile.getAbsolutePath(); // ✅ Return full absolute path
+    }
 }
