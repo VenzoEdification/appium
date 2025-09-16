@@ -5,20 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Report;
-import utils.SharedDriver;
 import org.openqa.selenium.support.PageFactory;
-import java.net.MalformedURLException;
-import java.time.Duration;
-import java.util.Map;
 
 public class LoginUI extends Report {
     AndroidDriver driver;
 
-    @FindBy(how = How.ID, using = "com.sec.android.app.popupcalculator:id/calc_keypad_btn_08")
-    public WebElement eight;
 
     @FindBy(how = How.XPATH,
             using = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView")
@@ -45,16 +37,10 @@ public class LoginUI extends Report {
     @FindBy(how = How.ID, using = "myAccountButton")
     public WebElement clickmyaccount;
 
-    public LoginUI() {
+    public LoginUI(AndroidDriver driver) {
         super();
-
-        try {
-            this.driver = SharedDriver.getCapabilities(); // Initialize the driver
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        PageFactory.initElements(driver, this);
-
+        this.driver = this.driver;
+        PageFactory.initElements(this.driver, this);
     }
 
 

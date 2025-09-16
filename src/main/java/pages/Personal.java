@@ -1,8 +1,6 @@
 package pages;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.apache.commons.math3.analysis.function.Add;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -10,9 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Report;
-import utils.SharedDriver;
+import utils.extent.CommonMethods;
 
-import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class Personal extends Report {
@@ -21,11 +18,11 @@ public class Personal extends Report {
     public WebElement nationality;
     @FindBy(how = How.XPATH,using = "//android.widget.TextView[@text=\"Indian\"]")
     public WebElement Indian;
-    @FindBy(how = How.XPATH,using = "//android.widget.TextView[@text=\"Blood Group\"]")
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"personal-blood-group-input\"]")
     public WebElement BloodGroup;
-    @FindBy(how = How.XPATH,using = "//android.widget.TextView[@text=\"Father's name\"]]")
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"personal-father-input\"]")
     public WebElement Fathername;
-    @FindBy(how = How.XPATH,using = "//android.widget.TextView[@text=\"Email\"]")
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"personal-email-input\"]")
     public WebElement Email;
     @FindBy(how = How.XPATH,using = "//android.widget.EditText[@text=\"Address Line 1\"]")
     public WebElement Address;
@@ -44,16 +41,10 @@ public class Personal extends Report {
 
 
 
-    public Personal() {
+    public Personal(AndroidDriver driver) {
         super();
-
-        try {
-            this.driver = SharedDriver.getCapabilities(); // Initialize the driver
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        PageFactory.initElements(driver, this);
-
+        this.driver = this.driver;
+        PageFactory.initElements(this.driver, this);
     }
     public Personal ClickNationality() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -95,6 +86,15 @@ public class Personal extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Email));
         Email.click();
+        return this;
+    }
+    public Personal EnterEmail() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        wait.until(ExpectedConditions.elementToBeClickable(Email));
+        String generatedEmail = CommonMethods.generateRandomEmail();
+        Email.sendKeys(generatedEmail);
+
         return this;
     }
     public Personal ClickAddressLine() {

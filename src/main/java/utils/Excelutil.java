@@ -1,13 +1,8 @@
 package utils;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
@@ -246,6 +241,47 @@ public class Excelutil {
             throw new IOException("Image file not found at path: " + imagePath);
         }
 
-        return imgFile.getAbsolutePath(); // ✅ Return full absolute path
+        return imgFile.getAbsolutePath();
     }
+
+
+
+    public Map<String, String> getRowData(String filePath, String sheetName, int rowNum) throws IOException {
+        InputStream fileStream = Thread.currentThread()
+                .getContextClassLoader()
+                .getResourceAsStream(filePath);
+
+        Workbook workbook;
+        if (fileStream != null) {
+            // Load from resources
+            workbook = WorkbookFactory.create(fileStream);
+        } else {
+            // Fallback: load from normal file system (absolute/relative path)
+            File file = new File(filePath);
+            if (!file.exists()) {
+                String projectPath = System.getProperty("user.dir");
+                file = new File(projectPath, filePath); // try relative to project root
+            }
+            if (!file.exists()) {
+                throw new FileNotFoundException("Excel file not found at: " + file.getAbsolutePath());
+            }
+            workbook = WorkbookFactory.create(file);
+        }
+
+        Sheet sheet = workbook.getSheet(sheetName);
+        Row headerRow = sheet.getRow(0);
+        Row dataRow = sheet.getRow(rowNum);
+
+        Map<String, String> rowData = new HashMap<>();
+        for (int i = 0; i < headerRow.getLastCellNum(); i++) {
+            String key = headerRow.getCell(i).getStringCellValue();
+            String value = (dataRow.getCell(i) != null) ? dataRow.getCell(i).toString() : "";
+            rowData.put(key, value);
+        }
+
+        workbook.close();
+        return rowData;
+    }
+
 }
+

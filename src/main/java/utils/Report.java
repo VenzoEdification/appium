@@ -1,64 +1,62 @@
-
 package utils;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Report {
+    private static ExtentReports extent;
+    private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
-    private static final String OUTPUT_FOLDER = "./Report/";
-    private static final String FILE_NAME = "TestReport.html";
-    public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
-    public static ExtentReports extentReports;
+    public static void initReport() {
+        String timeStamp = new SimpleDateFormat("ddMMM_HHmm").format(new Date());
+        String reportPath = System.getProperty("user.dir") + "/report/TestReport_" + timeStamp + ".html";
 
-    // Static block to initialize ExtentReports
-    static {
-        extentReports = init();
+        ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
+        spark.config().setReportName("Mobile Automation Execution Report");
+        spark.config().setDocumentTitle("Test Execution Summary");
+
+        extent = new ExtentReports();
+        extent.attachReporter(spark);
     }
 
-    private static ExtentReports init() {
-        Path path = Paths.get(OUTPUT_FOLDER);
-        if (!Files.exists(path)) {
-            try {
-                Files.createDirectories(path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        ExtentReports extentReports = new ExtentReports();
-        ExtentSparkReporter reporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
-        reporter.config().setReportName("Test Results");
-        extentReports.attachReporter(reporter);
-        return extentReports;
-    }
-
-    public static ExtentTest createTest(String testName) {
-        ExtentTest extentTest = extentReports.createTest(testName);
-        test.set(extentTest);  // Set ExtentTest in ThreadLocal
-        return extentTest;
-    }
-
-    public static void flushReports() {
-        if (extentReports != null) {
-            extentReports.flush();
+    public static void flushReport() {
+        if (extent != null) {
+            extent.flush();
         }
     }
+
+    public static void createTest(String scenarioName) {
+        if (extent == null) {
+            System.out.println("❗Extent is NULL in createTest(). Did you forget to call initReport()?");
+        }
+        ExtentTest extentTest = extent.createTest(scenarioName);
+        test.set(extentTest);
     }
 
+    public static void clearTest() {
+        test.remove();
+    }
 
+    public static ExtentTest getTest() {
+        return test.get();
+    }
 
+    public static void logInfo(String message) {
+        getTest().info(message);
+    }
 
+    public static void logPass(String message) {
+        getTest().pass(message);
+    }
 
+    public static void logFail(String message) {
+        getTest().fail(message);
+    }
 
-
-
+    public static void attachScreenshot(String path) {
+        getTest().addScreenCaptureFromPath(path);
+    }
+}

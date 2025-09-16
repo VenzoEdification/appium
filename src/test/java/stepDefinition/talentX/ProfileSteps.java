@@ -1,4 +1,5 @@
 package stepDefinition.talentX;
+import driver.driverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.profile;
@@ -7,8 +8,9 @@ import java.net.MalformedURLException;
 
 
 public class ProfileSteps extends profile {
+    profile Profile = new profile(driverManager.getDriver());
     public ProfileSteps() throws MalformedURLException {
-        super();
+        super(driverManager.getDriver());
     }
 
     @Given("The dashboard is visible")
