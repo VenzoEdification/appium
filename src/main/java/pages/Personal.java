@@ -8,8 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Report;
+import utils.SharedDriver;
 import utils.extent.CommonMethods;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class Personal extends Report {
@@ -35,16 +37,9 @@ public class Personal extends Report {
     @FindBy(how = How.XPATH,using = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ImageView")
     public WebElement Uploadimage;
 
-
-
-
-
-
-
-    public Personal(AndroidDriver driver) {
-        super();
-        this.driver = this.driver;
-        PageFactory.initElements(this.driver, this);
+    public Personal() throws MalformedURLException {
+        this.driver = SharedDriver.getCapabilities();
+        PageFactory.initElements(driver, this);
     }
     public Personal ClickNationality() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));

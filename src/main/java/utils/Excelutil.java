@@ -244,8 +244,6 @@ public class Excelutil {
         return imgFile.getAbsolutePath();
     }
 
-
-
     public Map<String, String> getRowData(String filePath, String sheetName, int rowNum) throws IOException {
         InputStream fileStream = Thread.currentThread()
                 .getContextClassLoader()
@@ -282,6 +280,8 @@ public class Excelutil {
         workbook.close();
         return rowData;
     }
+
+
 
 }
 

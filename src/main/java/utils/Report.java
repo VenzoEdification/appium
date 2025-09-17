@@ -6,57 +6,111 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class Report {
     private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
+    /**
+     * Initialize ExtentReports instance.
+     * Call once before running any tests.
+     */
     public static void initReport() {
-        String timeStamp = new SimpleDateFormat("ddMMM_HHmm").format(new Date());
-        String reportPath = System.getProperty("user.dir") + "/report/TestReport_" + timeStamp + ".html";
+        if (extent == null) {
+            String timeStamp = new SimpleDateFormat("ddMMM_HHmm").format(new Date());
+            String reportPath = System.getProperty("user.dir") + "/reports/TestReport_" + timeStamp + ".html";
 
-        ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
-        spark.config().setReportName("Mobile Automation Execution Report");
-        spark.config().setDocumentTitle("Test Execution Summary");
+            ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
+            spark.config().setReportName("Mobile Automation Execution Report");
+            spark.config().setDocumentTitle("Test Execution Summary");
 
-        extent = new ExtentReports();
-        extent.attachReporter(spark);
+            extent = new ExtentReports();
+            extent.attachReporter(spark);
+            extent.setSystemInfo("Framework", "Cucumber + Appium");
+            extent.setSystemInfo("OS", System.getProperty("os.name"));
+            extent.setSystemInfo("User", System.getProperty("user.name"));
+        }
     }
 
+    /**
+     * Flush the report to disk.
+     * Call once after all scenarios/tests finish.
+     */
     public static void flushReport() {
         if (extent != null) {
             extent.flush();
         }
     }
 
+    /**
+     * Create a new test in the report for the given scenario.
+     */
     public static void createTest(String scenarioName) {
         if (extent == null) {
-            System.out.println("❗Extent is NULL in createTest(). Did you forget to call initReport()?");
+            System.err.println("❗ ExtentReports not initialized. Did you forget to call initReport()?");
+            return;
         }
         ExtentTest extentTest = extent.createTest(scenarioName);
         test.set(extentTest);
     }
 
+    /**
+     * Clear the current thread's test instance.
+     */
     public static void clearTest() {
         test.remove();
     }
 
+    /**
+     * Get the current thread's ExtentTest instance.
+     */
     public static ExtentTest getTest() {
         return test.get();
     }
 
+    /**
+     * Log INFO message.
+     */
     public static void logInfo(String message) {
-        getTest().info(message);
+        if (getTest() != null) {
+            getTest().info(message);
+        } else {
+            System.out.println("[INFO] " + message);
+        }
     }
 
+    /**
+     * Log PASS message.
+     */
     public static void logPass(String message) {
-        getTest().pass(message);
+        if (getTest() != null) {
+            getTest().pass(message);
+        } else {
+            System.out.println("[PASS] " + message);
+        }
     }
 
+    /**
+     * Log FAIL message.
+     */
     public static void logFail(String message) {
-        getTest().fail(message);
+        if (getTest() != null) {
+            getTest().fail(message);
+        } else {
+            System.err.println("[FAIL] " + message);
+        }
     }
 
+    /**
+     * Attach screenshot to report.
+     */
     public static void attachScreenshot(String path) {
-        getTest().addScreenCaptureFromPath(path);
+        try {
+            if (getTest() != null) {
+                getTest().addScreenCaptureFromPath(path);
+            }
+        } catch (Exception e) {
+            System.err.println("⚠ Could not attach screenshot: " + e.getMessage());
+        }
     }
 }

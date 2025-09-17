@@ -9,7 +9,7 @@ import utils.Report;
         "src/test/resources/talentXFeature/TC002_Profile.feature",
         "src/test/resources/talentXFeature/TC003_Personal.feature"}, glue = {"stepDefinition/talentX"},
         plugin = {"pretty"}
-//        "html:Report/cucumberReport.html"
+    //    "html:Report/cucumberReport.html"
 
 //        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 
