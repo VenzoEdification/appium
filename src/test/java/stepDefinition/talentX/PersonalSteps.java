@@ -23,7 +23,7 @@ public class PersonalSteps extends Personal {
     public void thePersonalPageIsVisible() throws Exception {
         Excelutil reader = new Excelutil();
         // Load row 1 for now (you can loop for multiple rows in runner)
-        testData = reader.getRowData("input/Personal.xlsx", "PersonalDetails", 1);
+        testData = reader.getRowData("input/Personal.xlsx", "PersonalDetails",1);
         System.out.println("Loaded Test Data: " + testData);
     }
 

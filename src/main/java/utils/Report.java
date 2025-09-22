@@ -17,7 +17,7 @@ public class Report {
      */
     public static void initReport() {
         if (extent == null) {
-            String timeStamp = new SimpleDateFormat("ddMMM_HHmm").format(new Date());
+            String timeStamp = new SimpleDateFormat("ddMMYYYY").format(new Date());
             String reportPath = System.getProperty("user.dir") + "/reports/TestReport_" + timeStamp + ".html";
 
             ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);

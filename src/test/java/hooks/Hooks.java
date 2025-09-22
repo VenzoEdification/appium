@@ -1,40 +1,31 @@
 package hooks;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
+import utils.Excelutil;
 import utils.Report;
+
+import java.util.Map;
+//import utils.ScreenshotUtils;
 
 public class Hooks {
 
-    @Before(order = 0)
-    public void initReport() {
-        // Initialize ExtentReports only once
-        if (Report.getTest() == null) {
-            Report.initReport();
-        }
-    }
-
-    @Before(order = 1)
+    @Before
     public void beforeScenario(Scenario scenario) {
-        String scenarioName = scenario.getName();
-        Report.createTest(scenarioName);
-        Report.logInfo("🚀 Starting scenario: " + scenarioName);
+        String scenarioName= scenario.getName();
+        Report.createTest(scenario.getName());
+        Report.logInfo("Scenario started: " + scenario.getName());
+        Report.logInfo(" App launched and scenario started");
+
     }
 
     @After
     public void afterScenario(Scenario scenario) {
         if (scenario.isFailed()) {
-            Report.logFail("❌ Scenario failed: " + scenario.getName());
-            // You can attach screenshot here if available
+            Report.logFail("Scenario FAILED: " + scenario.getName());
         } else {
-            Report.logPass("✅ Scenario passed: " + scenario.getName());
+            Report.logPass("Scenario PASSED: " + scenario.getName());
         }
-        Report.clearTest();
-    }
 
-    @After(order = 1)
-    public void tearDown() {
-        Report.flushReport();  // Write everything to file
+        Report.clearTest();
     }
 }

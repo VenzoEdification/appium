@@ -7,11 +7,13 @@ import utils.Report;
 
 @CucumberOptions(features = {"src/test/resources/talentXFeature/TC001_Login.feature",
         "src/test/resources/talentXFeature/TC002_Profile.feature",
-        "src/test/resources/talentXFeature/TC003_Personal.feature"}, glue = {"stepDefinition/talentX"},
-        plugin = {"pretty"}
-    //    "html:Report/cucumberReport.html"
+        "src/test/resources/talentXFeature/TC003_Personal.feature"},  glue = {"stepDefinition/talentX", "hooks"},
+        plugin = {
+                "pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        },
+        monochrome = true
 
-//        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 
 )
 public class TalentxRunner extends AbstractTestNGCucumberTests{

@@ -70,7 +70,7 @@ public class LoginUI extends Report {
 
     public LoginUI ClickAllownotification() throws InterruptedException {
         Thread.sleep(6000);
-        //clickallownotification.click();
+        clickallownotification.click();
         return this;
     }
 

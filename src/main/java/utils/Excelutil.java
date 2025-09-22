@@ -244,7 +244,7 @@ public class Excelutil {
         return imgFile.getAbsolutePath();
     }
 
-    public Map<String, String> getRowData(String filePath, String sheetName, int rowNum) throws IOException {
+    public Map<String, String> getRowData(String filePath, String sheetName, int rowIndex) throws IOException {
         InputStream fileStream = Thread.currentThread()
                 .getContextClassLoader()
                 .getResourceAsStream(filePath);
@@ -267,13 +267,21 @@ public class Excelutil {
         }
 
         Sheet sheet = workbook.getSheet(sheetName);
+        if (sheet == null) {
+            throw new IllegalArgumentException("Sheet '" + sheetName + "' not found in file: " + filePath);
+        }
+
         Row headerRow = sheet.getRow(0);
-        Row dataRow = sheet.getRow(rowNum);
+        Row dataRow = sheet.getRow(rowIndex);
+
+        if (headerRow == null) throw new IllegalStateException("Header row missing in sheet " + sheetName);
+        if (dataRow == null) throw new IllegalArgumentException("Row " + rowIndex + " not found in sheet " + sheetName);
 
         Map<String, String> rowData = new HashMap<>();
         for (int i = 0; i < headerRow.getLastCellNum(); i++) {
             String key = headerRow.getCell(i).getStringCellValue();
-            String value = (dataRow.getCell(i) != null) ? dataRow.getCell(i).toString() : "";
+            Cell cell = dataRow.getCell(i);
+            String value = (cell != null) ? cell.toString() : "";
             rowData.put(key, value);
         }
 
@@ -282,6 +290,97 @@ public class Excelutil {
     }
 
 
+        public String getCellData(String excelFilePath, String sheetName, String rowName, String columnName) throws IOException {
+            try (FileInputStream fis = new FileInputStream(excelFilePath);
+                 Workbook workbook = new XSSFWorkbook(fis)) {
 
-}
+                Sheet sheet = workbook.getSheet(sheetName);
+                if (sheet == null) {
+                    throw new IllegalArgumentException("Sheet " + sheetName + " not found");
+                }
+
+                // Header row
+                Row headerRow = sheet.getRow(0);
+                if (headerRow == null) {
+                    throw new IllegalStateException("Header row missing in " + sheetName);
+                }
+
+                // Find column index for the given column name
+                int columnIndex = -1;
+                for (int i = 0; i < headerRow.getLastCellNum(); i++) {
+                    if (headerRow.getCell(i).getStringCellValue().equalsIgnoreCase(columnName)) {
+                        columnIndex = i;
+                        break;
+                    }
+                }
+
+                if (columnIndex == -1) {
+                    throw new IllegalArgumentException("Column '" + columnName + "' not found");
+                }
+
+                // Find row by first column (RowName)
+                int rowCount = sheet.getPhysicalNumberOfRows();
+                for (int i = 1; i < rowCount; i++) { // start after header
+                    Row row = sheet.getRow(i);
+                    if (row != null) {
+                        Cell firstCell = row.getCell(0);
+                        if (firstCell != null && firstCell.getStringCellValue().equalsIgnoreCase(rowName)) {
+                            // Return the cell value from the matched column
+                            return getCellValue(row.getCell(columnIndex));
+                        }
+                    }
+                }
+            }
+            throw new IllegalArgumentException("Row '" + rowName + "' not found in sheet " + sheetName);
+        }
+    public List<Map<String, String>> getSheetData(String excelFilePath, String sheetName) throws IOException {
+        List<Map<String, String>> sheetData = new ArrayList<>();
+
+        try (FileInputStream fis = new FileInputStream(excelFilePath);
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) throw new IllegalArgumentException("Sheet " + sheetName + " not found");
+
+            Row headerRow = sheet.getRow(0);
+            if (headerRow == null) throw new IllegalStateException("Header row missing in " + sheetName);
+
+            int rowCount = sheet.getPhysicalNumberOfRows();
+            int colCount = headerRow.getLastCellNum();
+
+            for (int i = 1; i < rowCount; i++) {
+                Row row = sheet.getRow(i);
+                if (row == null) continue;
+
+                Map<String, String> rowMap = new HashMap<>();
+                for (int j = 0; j < colCount; j++) {
+                    String key = headerRow.getCell(j).getStringCellValue();
+                    String value = getCellValue(row.getCell(j));
+                    rowMap.put(key, value);
+                }
+                sheetData.add(rowMap);
+            }
+        }
+        return sheetData;
+    }
+
+
+
+        // Helper → convert cell to String
+        private String getCellValue(Cell cell) {
+            if (cell == null) return "";
+            return switch (cell.getCellType()) {
+                case STRING -> cell.getStringCellValue();
+                case NUMERIC -> (DateUtil.isCellDateFormatted(cell))
+                        ? cell.getDateCellValue().toString()
+                        : String.valueOf((long) cell.getNumericCellValue());
+                case BOOLEAN -> String.valueOf(cell.getBooleanCellValue());
+                default -> "";
+            };
+        }
+
+    }
+
+
+
 

@@ -23,8 +23,7 @@ public class LoginSteps extends LoginUI {
     @Given("the TALENTx app is launched")
     public void the_TALENTx_app_is_launched() throws IOException {
         Excelutil reader = new Excelutil();
-        // 🔹 Load row 1 (you can make it dynamic in runner for multiple rows)
-        testData = reader.getRowData("input/Login.xlsx", "Login", 1);
+        testData = reader.getRowData("input/Login.xlsx", "Login",1);
         System.out.println("Loaded Test Data: " + testData);
     }
 
