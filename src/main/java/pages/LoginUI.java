@@ -42,8 +42,9 @@ public class LoginUI extends Report {
     @FindBy(how = How.XPATH, using = "//android.widget.TextView[@text=\"Verify\"]")
     public WebElement clickverify;
 
-    @FindBy(how = How.ID, using = "myAccountButton")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"My Account, View more\"]")
     public WebElement clickmyaccount;
+
 
 
     public LoginUI() throws MalformedURLException {
@@ -89,6 +90,13 @@ public class LoginUI extends Report {
         clickverify.click();
         return this;
     }
+    public LoginUI ClickMyAccount() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(clickmyaccount));
+        clickmyaccount.click();
+        return this;
+    }
+
 
     /* Example if you want to handle captcha later:
     public LoginUI ClickCaptchaBox() {

@@ -17,7 +17,7 @@ public class Report {
      */
     public static void initReport() {
         if (extent == null) {
-            String timeStamp = new SimpleDateFormat("ddMMYYYY").format(new Date());
+            String timeStamp = new SimpleDateFormat("dd/MM/yyy").format(new Date());
             String reportPath = System.getProperty("user.dir") + "/reports/TestReport_" + timeStamp + ".html";
 
             ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
@@ -32,19 +32,12 @@ public class Report {
         }
     }
 
-    /**
-     * Flush the report to disk.
-     * Call once after all scenarios/tests finish.
-     */
     public static void flushReport() {
         if (extent != null) {
             extent.flush();
         }
     }
 
-    /**
-     * Create a new test in the report for the given scenario.
-     */
     public static void createTest(String scenarioName) {
         if (extent == null) {
             System.err.println("❗ ExtentReports not initialized. Did you forget to call initReport()?");

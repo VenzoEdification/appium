@@ -1,6 +1,6 @@
 Feature: Login Mobile App
 
-  Scenario: Verify the app opens correctly
+  Scenario: Login Scenario
     Given the TALENTx app is launched
     Then click allow button
     When enter the value "phoneNumber"
@@ -8,6 +8,9 @@ Feature: Login Mobile App
     Then click Send Code
    Then enter otp
     Then click verify
+    Then Click myaccount
+
+
 
 
 

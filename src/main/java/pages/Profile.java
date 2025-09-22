@@ -14,7 +14,7 @@ import utils.extent.CommonMethods;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
-public class Personal extends Report {
+public class Profile extends Report {
     AndroidDriver driver;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Nationality\"]")
     public WebElement nationality;
@@ -36,10 +36,19 @@ public class Personal extends Report {
     public WebElement Update;
     @FindBy(how = How.XPATH,using = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ImageView")
     public WebElement Uploadimage;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Personal\"]")
+    public WebElement clickpersonal;
 
     public Personal() throws MalformedURLException {
         this.driver = SharedDriver.getCapabilities();
         PageFactory.initElements(driver, this);
+    }
+
+    public Personal ClickPersonaldetails()  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(clickpersonal));
+        clickpersonal.click();
+        return this;
     }
     public Personal ClickNationality() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
