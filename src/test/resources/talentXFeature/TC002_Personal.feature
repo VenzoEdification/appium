@@ -1,6 +1,6 @@
-Feature: Profile Details
+Feature: Personal Details
 
-  Scenario: Profile Details
+  Scenario: Personal Details
     Given The Profile Details is visible
     Then Click Personal Tab
     Then Click Nationality
@@ -13,10 +13,7 @@ Feature: Profile Details
     When Enter Email
     Then Click Address Line
     When Enter Address Line "AddressLine"
-    Then Click City
-    When Enter the City name "City"
-    Then Click Pincode
-    When Enter the PinCode "Pincode"
+
     Then Click Upload Image
     When Upload the Profile image "ProfileImage"
     Then Click Update Button

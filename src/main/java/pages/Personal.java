@@ -14,7 +14,7 @@ import utils.extent.CommonMethods;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
-public class Profile extends Report {
+public class Personal extends Report {
     AndroidDriver driver;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Nationality\"]")
     public WebElement nationality;
@@ -36,7 +36,7 @@ public class Profile extends Report {
     public WebElement Update;
     @FindBy(how = How.XPATH,using = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ImageView")
     public WebElement Uploadimage;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Personal\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.TextView[@text=\"Personal\"]")
     public WebElement clickpersonal;
 
     public Personal() throws MalformedURLException {
@@ -72,6 +72,7 @@ public class Profile extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(BloodGroup));
         BloodGroup.sendKeys(Bloodgroup);
+        driver.hideKeyboard();
         return this;
     }
     public Personal ClickFathername() {
@@ -84,6 +85,7 @@ public class Profile extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Fathername));
         Fathername.sendKeys(fathername);
+        driver.hideKeyboard();
         return this;
     }
     public Personal ClickEmail() {
@@ -98,6 +100,7 @@ public class Profile extends Report {
         wait.until(ExpectedConditions.elementToBeClickable(Email));
         String generatedEmail = CommonMethods.generateRandomEmail();
         Email.sendKeys(generatedEmail);
+        driver.hideKeyboard();
 
         return this;
     }
@@ -111,6 +114,7 @@ public class Profile extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Address));
         Address.sendKeys(AddressLine1);
+        driver.hideKeyboard();
         return this;
     }
     public Personal ClickCity() {
@@ -123,6 +127,7 @@ public class Profile extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(City));
         City.sendKeys(cityName);
+        driver.hideKeyboard();
         return this;
     }
     public Personal ClickPincode() {
@@ -136,6 +141,7 @@ public class Profile extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Pincode));
         Pincode.sendKeys(pincode);
+        driver.hideKeyboard();
         return this;
     }
     public Personal ClickUpdateButton() {

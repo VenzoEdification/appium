@@ -11,13 +11,9 @@ public class Report {
     private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
-    /**
-     * Initialize ExtentReports instance.
-     * Call once before running any tests.
-     */
     public static void initReport() {
         if (extent == null) {
-            String timeStamp = new SimpleDateFormat("dd/MM/yyy").format(new Date());
+            String timeStamp = new SimpleDateFormat("dd_MM_yyy").format(new Date());
             String reportPath = System.getProperty("user.dir") + "/reports/TestReport_" + timeStamp + ".html";
 
             ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
