@@ -98,12 +98,4 @@ public class LoginUI extends Report {
     }
 
 
-    /* Example if you want to handle captcha later:
-    public LoginUI ClickCaptchaBox() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOf(CaptchaBox));
-        CaptchaBox.click();
-        return this;
-    }
-    */
 }

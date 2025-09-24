@@ -1,6 +1,6 @@
-Feature: Profile Details
+Feature: Personal Details
 
-  Scenario: Profile Details
+  Scenario: Personal Details
     Given The Profile Details is visible
     Then Click Personal Tab
     Then Click Nationality

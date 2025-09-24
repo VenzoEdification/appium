@@ -35,7 +35,7 @@ public class LoginSteps extends LoginUI {
     }
 
 
-    @Then("click allow button")
+ /*   @Then("click allow button")
     public LoginSteps click_allow_button() throws InterruptedException {
         try {
             ClickAllownotification();
@@ -46,7 +46,7 @@ public class LoginSteps extends LoginUI {
         }
 
         return this;
-    }
+    }*/
 
     @When("enter the value {string}")
     public void enter_the_value_(String phoneNumber) {
@@ -125,11 +125,7 @@ public class LoginSteps extends LoginUI {
     }
 
 
-    @Then("Click Personal Tab")
-    public void click_personal_tab() {
-        ClickPersonaldetails();
 
-    }
 }
 
 
