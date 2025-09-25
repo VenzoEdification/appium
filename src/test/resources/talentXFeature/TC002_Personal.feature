@@ -6,15 +6,23 @@ Feature: Personal Details
     Then Click Nationality
     Then Click Indian
     Then Click Blood Group
-    When Enter Blood Group "BloodGroup"
+    Then Click Blood Group Type
     Then Click FatherName
     When Enter FatherName "FatherName"
+    Then Click Date of Birth
     Then Click Email
     When Enter Email
     Then Click Address Line
     When Enter Address Line "AddressLine"
-
+    Then Click City
+    Then Click Search City
+    When Enter the City name "city"
+    Then Click Pincode
+    When Enter the PinCode "pincode"
     Then Click Upload Image
-    When Upload the Profile image "ProfileImage"
+    Then Click Camera
+    Then Click Camera Button
+    Then Click Ok Button
+    Then Click Crop Button
     Then Click Update Button
     Then The Profile page should display

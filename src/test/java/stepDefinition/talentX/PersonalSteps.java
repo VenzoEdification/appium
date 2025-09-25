@@ -3,7 +3,6 @@ package stepDefinition.talentX;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.LoginUI;
 import pages.Personal;
 
 import utils.Excelutil;
@@ -35,8 +34,9 @@ public class PersonalSteps extends Personal {
         testData = reader.getRowData("input/Profile.xlsx", "PersonalDetails", 1);
         System.out.println("Loaded Test Data: " + testData);
     }
+
     @Then("Click Personal Tab")
-    public void click_personal_tab()throws Exception {
+    public void click_personal_tab() throws Exception {
         try {
             ClickPersonaldetails();
             Report.logInfo("The Personal Details is Visible");
@@ -61,7 +61,7 @@ public class PersonalSteps extends Personal {
     @Then("Click Indian")
     public void clickIndian() {
         try {
-         ClickIndian();
+            ClickIndian();
             Report.logInfo("Selected Indian nationality.");
         } catch (Exception e) {
             Report.logFail("Failed to select Indian nationality: " + e.getMessage());
@@ -80,22 +80,22 @@ public class PersonalSteps extends Personal {
         }
     }
 
-    @When("Enter Blood Group {string}")
-    public void enterBloodGroup(String key) {
+    @Then("Click Blood Group Type")
+    public Personal clickBloodGroupType()  {
         try {
-            String value = testData.get(key);
-         EnterBloodGroup(value);
-            Report.logInfo("Entered Blood Group: " + value);
+            ClickBloodGroupType();
+            Report.logInfo("Entered Blood Group Type ");
         } catch (Exception e) {
             Report.logFail("Failed to enter Blood Group: " + e.getMessage());
             throw e;
         }
+        return this;
     }
 
     @Then("Click FatherName")
     public void clickFatherName() {
         try {
-           ClickFathername();
+            ClickFathername();
             Report.logInfo("Clicked Father Name field.");
         } catch (Exception e) {
             Report.logFail("Failed to click Father Name: " + e.getMessage());
@@ -107,7 +107,7 @@ public class PersonalSteps extends Personal {
     public void enterFatherName(String key) {
         try {
             String value = testData.get(key);
-           EnterFathername(value);
+            EnterFathername(value);
             Report.logInfo("Entered Father Name: " + value);
         } catch (Exception e) {
             Report.logFail("Failed to enter Father Name: " + e.getMessage());
@@ -118,7 +118,7 @@ public class PersonalSteps extends Personal {
     @Then("Click Email")
     public void clickEmail() {
         try {
-           ClickEmail();
+            ClickEmail();
             Report.logInfo("Clicked Email field.");
         } catch (Exception e) {
             Report.logFail("Failed to click Email: " + e.getMessage());
@@ -129,7 +129,7 @@ public class PersonalSteps extends Personal {
     @When("Enter Email")
     public void enterEmail() {
         try {
-          EnterEmail();
+            EnterEmail();
             Report.logInfo("Entered Email:" + CommonMethods.generateRandomEmail());
         } catch (Exception e) {
             Report.logFail("Failed to enter Email: " + e.getMessage());
@@ -140,7 +140,7 @@ public class PersonalSteps extends Personal {
     @Then("Click Address Line")
     public void clickAddressLine() {
         try {
-           ClickAddressLine();
+            ClickAddressLine();
             Report.logInfo("Clicked Address Line field.");
         } catch (Exception e) {
             Report.logFail("Failed to click Address Line: " + e.getMessage());
@@ -149,10 +149,10 @@ public class PersonalSteps extends Personal {
     }
 
     @When("Enter Address Line {string}")
-    public void enterAddressLine(String key) {
+    public void enterAddressLine(String key) throws InterruptedException {
         try {
             String value = testData.get(key);
-          EnterAddressLine1(value);
+            EnterAddressLine1(value);
             Report.logInfo("Entered Address Line: " + value);
         } catch (Exception e) {
             Report.logFail("Failed to enter Address Line: " + e.getMessage());
@@ -161,9 +161,9 @@ public class PersonalSteps extends Personal {
     }
 
     @Then("Click City")
-    public void clickCity() {
+    public void clickCity() throws InterruptedException {
         try {
-           ClickCity();
+            ClickCity();
             Report.logInfo("Clicked City field.");
         } catch (Exception e) {
             Report.logFail("Failed to click City: " + e.getMessage());
@@ -172,10 +172,11 @@ public class PersonalSteps extends Personal {
     }
 
     @When("Enter the City name {string}")
-    public void enterTheCityName(String key) {
+    public void enterTheCityName(String key) throws InterruptedException {
+
         try {
             String value = testData.get(key);
-           EnterCity(value);
+            EnterCity(value);
             Report.logInfo("Entered City: " + value);
         } catch (Exception e) {
             Report.logFail("Failed to enter City: " + e.getMessage());
@@ -186,7 +187,7 @@ public class PersonalSteps extends Personal {
     @Then("Click Pincode")
     public void clickPincode() {
         try {
-           ClickPincode();
+            ClickPincode();
             Report.logInfo("Clicked Pincode field.");
         } catch (Exception e) {
             Report.logFail("Failed to click Pincode: " + e.getMessage());
@@ -209,7 +210,7 @@ public class PersonalSteps extends Personal {
     @Then("Click Upload Image")
     public void clickUploadImage() throws InterruptedException {
         try {
-          ClickUploadImage();
+            UploadImage();
             Report.logInfo("Clicked Upload Image button.");
         } catch (Exception e) {
             Report.logFail("Failed to click Upload Image: " + e.getMessage());
@@ -217,17 +218,6 @@ public class PersonalSteps extends Personal {
         }
     }
 
-    @When("Upload the Profile image {string}")
-    public void uploadTheProfileImage(String key) throws Exception {
-        try {
-            String value = testData.get(key);
-          UploadImage(value);
-            Report.logInfo("Uploaded Profile Image: " + value);
-        } catch (Exception e) {
-            Report.logFail("Failed to upload Profile Image: " + e.getMessage());
-            throw e;
-        }
-    }
 
     @Then("Click Update Button")
     public void clickUpdateButton() {
@@ -243,10 +233,94 @@ public class PersonalSteps extends Personal {
     @Then("The Profile page should display")
     public void theProfilePageShouldDisplay() {
         try {
-            Report.logPass("Profile page displayed successfully!");
+            Report.logInfo("Profile page displayed successfully!");
         } catch (Exception e) {
             Report.logFail("Profile page validation failed: " + e.getMessage());
             throw e;
         }
     }
+
+
+    @Then("Click Camera")
+    public void clickCamera() throws InterruptedException {
+        try {
+            ClickCamera();
+            Report.logInfo("CameraOption is Clicked:");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Camera: " + e.getMessage());
+            throw e;
+        }
+
+    }
+
+    @Then("Click Camera Button")
+    public void clickCameraButton() throws InterruptedException {
+        try {
+            ClickTakePicture();
+            Report.logInfo("CameraButton is Clicked:");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Camera: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("Click Ok Button")
+    public void clickOkButton() throws InterruptedException {
+        try {
+            ClickCameraOkButton();
+            Report.logInfo("Ok Button is Clicked:");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Ok Button: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("Click Crop Button")
+    public void clickCropButton() throws InterruptedException {
+        try {
+            ClickEditCrop();
+            Report.logInfo("Ok Button is Clicked:");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Ok Button: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("Click Date of Birth")
+    public void clickDateOfBirth() throws InterruptedException {
+        try {
+
+            CLickDateofBirth();
+            Report.logInfo("Entered DOB successfully");
+        } catch (Exception e) {
+            Report.logFail("Failed to enter DOB: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("Click Search City")
+    public void clickSearchCity() throws InterruptedException {
+        try {
+
+            SearchCity();
+            Report.logInfo("Entered City Name");
+        } catch (Exception e) {
+            Report.logFail("Failed to enter DOB: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("CLick Entered CityName")
+    public void clickEnteredCityName() throws InterruptedException {
+        try {
+
+            EnterCityName();
+            Report.logInfo("Entered City Name");
+        } catch (Exception e) {
+            Report.logFail("Failed to enter DOB: " + e.getMessage());
+            throw e;
+        }
+    }
 }
+
+

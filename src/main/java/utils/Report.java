@@ -43,23 +43,14 @@ public class Report {
         test.set(extentTest);
     }
 
-    /**
-     * Clear the current thread's test instance.
-     */
     public static void clearTest() {
         test.remove();
     }
 
-    /**
-     * Get the current thread's ExtentTest instance.
-     */
     public static ExtentTest getTest() {
         return test.get();
     }
 
-    /**
-     * Log INFO message.
-     */
     public static void logInfo(String message) {
         if (getTest() != null) {
             getTest().info(message);
@@ -68,9 +59,6 @@ public class Report {
         }
     }
 
-    /**
-     * Log PASS message.
-     */
     public static void logPass(String message) {
         if (getTest() != null) {
             getTest().pass(message);
@@ -79,9 +67,6 @@ public class Report {
         }
     }
 
-    /**
-     * Log FAIL message.
-     */
     public static void logFail(String message) {
         if (getTest() != null) {
             getTest().fail(message);
@@ -90,9 +75,6 @@ public class Report {
         }
     }
 
-    /**
-     * Attach screenshot to report.
-     */
     public static void attachScreenshot(String path) {
         try {
             if (getTest() != null) {

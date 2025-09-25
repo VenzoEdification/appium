@@ -44,6 +44,9 @@ public class LoginUI extends Report {
 
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"My Account, View more\"]")
     public WebElement clickmyaccount;
+    @FindBy(how = How.XPATH, using = "//android.widget.TextView[@text=\"OK\"]")
+    public WebElement remainderok;
+
 
 
 
@@ -58,6 +61,7 @@ public class LoginUI extends Report {
             NumberField.sendKeys(phoneNumber);
             return this;
     }
+
 
     public LoginUI ClickTermsCheckBox() {
         TermsCheckBox.click();
@@ -86,8 +90,10 @@ public class LoginUI extends Report {
         return this;
     }
 
-    public LoginUI ClickVerifyButton() {
+    public LoginUI ClickVerifyButton() throws InterruptedException {
         clickverify.click();
+        Thread.sleep(3000);
+        remainderok.click();
         return this;
     }
     public LoginUI ClickMyAccount() throws InterruptedException {

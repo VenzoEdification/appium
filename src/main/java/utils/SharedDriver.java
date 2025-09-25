@@ -13,17 +13,6 @@ import java.net.URL;
 import java.util.Properties;
 
 public class SharedDriver extends EventFiringDecorator<WebDriver> {
-//    public static WebDriver driver;
-//    public  SharedDriver(){
-//        this.driver=driver;
-//
-//    }
-//TestUtils utils = new TestUtils();
-
-    //    public DesiredCapabilities getCaps() throws IOException {
-//        GlobalParams params = new GlobalParams();
-//        Properties props = new PropertyManager().getProps();
-//    }
     private static AndroidDriver driver;
 
     public static AndroidDriver getCapabilities() throws MalformedURLException {

@@ -100,7 +100,7 @@ public class LoginSteps extends LoginUI {
     }
 
     @Then("click verify")
-    public void click_verify() {
+    public void click_verify() throws InterruptedException {
         try {
             ClickVerifyButton();
 
