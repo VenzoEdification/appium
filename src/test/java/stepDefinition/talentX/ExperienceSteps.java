@@ -1,43 +1,53 @@
 package stepDefinition.talentX;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pages.Experience;
+import utils.Report;
 
-public class ExperienceSteps {
+import java.net.MalformedURLException;
+
+public class ExperienceSteps extends Experience {
+    public ExperienceSteps() throws MalformedURLException {
+    }
+
     @Then("Click Experience Tab")
-    public void click_experience_tab() {
-
+    public void clickExperienceTab() {
+        try{
+            ClickExperienceTab();
+            Report.logInfo("Experience Tab is Clicked");
+        }catch (Exception e){
+            Report.logFail("Failed yo Click Experience Tab:" +e.getMessage());
+        }
     }
 
     @Then("Click Experience in years")
-    public void click_experience_in_years() {
-
+    public void clickExperienceInYears() {
+        try{
+            ClickExperienceTab();
+            Report.logInfo("Experience Tab is Clicked");
+        }catch (Exception e){
+            Report.logFail("Failed yo Click Experience Tab:" +e.getMessage());
+        }
     }
 
     @When("Enter Experience in years {string}")
-    public void enter_experience_in_years(String string) {
-
+    public void enterExperienceInYears(String arg0) {
     }
 
     @Then("Click Industry")
-    public void click_industry() {
-
+    public void clickIndustry() {
     }
 
     @Then("Select Industry")
-    public void select_industry() {
-
+    public void selectIndustry() {
     }
 
-
     @Then("Click Skill")
-    public void click_skill() {
-
+    public void clickSkill() {
     }
 
     @Then("Select Skill")
-    public void select_skill() {
-
+    public void selectSkill() {
     }
-
 }

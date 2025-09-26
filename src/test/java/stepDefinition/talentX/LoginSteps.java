@@ -24,7 +24,7 @@ public class LoginSteps extends LoginUI {
     @Given("the TALENTx app is launched")
     public void the_TALENTx_app_is_launched() throws IOException {
         try {
-            Report.logInfo("TALENTx app launched successfully.");
+            Report.logInfo("TALNTx app launched successfully");
         } catch (Exception e) {
             Report.logFail("App launch log failed: " + e.getMessage());
             throw e;
@@ -67,7 +67,7 @@ public class LoginSteps extends LoginUI {
     public void click_Terms_and_Agreement() {
         try {
             ClickTermsCheckBox();
-            Report.logInfo("Clicked Terms and Agreement checkbox.");
+            Report.logInfo("Terms and Agreement checkbox is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Terms and Agreement: " + e.getMessage());
             throw e;
@@ -79,7 +79,7 @@ public class LoginSteps extends LoginUI {
 
         try {
             ClicksendCode();
-            Report.logInfo("Clicked Send Code button.");
+            Report.logInfo("Send Code Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Send Code: " + e.getMessage());
             throw e;
@@ -91,7 +91,7 @@ public class LoginSteps extends LoginUI {
     public void enter_otp() throws InterruptedException {
         try {
             EnterOTP();
-            Report.logInfo("Entered OTP: ");
+            Report.logInfo("The Otp has been Entered Successfully ");
         } catch (Exception e) {
             Report.logFail("Failed to enter OTP: " + e.getMessage());
             throw e;
@@ -104,7 +104,7 @@ public class LoginSteps extends LoginUI {
         try {
             ClickVerifyButton();
 
-            Report.logInfo("Clicked Verify button.");
+            Report.logInfo("Verify Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Verify button: " + e.getMessage());
             throw e;
@@ -115,7 +115,7 @@ public class LoginSteps extends LoginUI {
         try {
             ClickMyAccount();
 
-            Report.logInfo("Clicked My Account.");
+            Report.logInfo("My Account Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Verify button: " + e.getMessage());
             throw e;
@@ -123,8 +123,6 @@ public class LoginSteps extends LoginUI {
 
 
     }
-
-
 
 }
 

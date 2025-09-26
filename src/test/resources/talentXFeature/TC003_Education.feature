@@ -10,17 +10,14 @@ Feature: Education Details
     Then Click Upload File1
     Then Click Camera
     Then Click Camera Button
-    Then click ok button
-    Then Click Crop Button
+    Then click Ok button
     Then Click Upload File2
     Then Click Camera
     Then Click Camera Button
-    Then click ok button
-    Then Click Crop Button
+    Then click Ok button
     Then Click Upload File3
     Then Click Camera
     Then Click Camera Button
-    Then click ok button
-    Then Click Crop Button
+    Then click Ok button
     Then Click Update Button
     Then The Profile page should display

@@ -1,42 +1,95 @@
 package stepDefinition.talentX;
 
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Then;
+import pages.Education;
+import utils.Report;
 
-public class EducationSteps {
+import java.net.MalformedURLException;
+
+public class EducationSteps extends Education {
+    public EducationSteps() throws MalformedURLException {
+    }
+
     @Then("Click Education Tab")
-    public void click_education_tab() {
+    public void clickEducationTab() {
+        try {
+            ClickEducationTab();
+            Report.logInfo("Education  is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Education: " + e.getMessage());
+            throw e;
+        }
 
     }
+
     @Then("Click  Highest Education Level")
-    public void click_highest_education_level() {
-
+    public void clickHighestEducationLevel() {
+        try {
+            ClickEducationLevel();
+            Report.logInfo("Education Level  is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Education Level: " + e.getMessage());
+            throw e;
+        }
     }
+
     @Then("Select Highest Educational Level")
-    public void select_highest_educational_level() {
+    public void selectHighestEducationalLevel() {
+        try {
+            SelectEducationLevel();
+            Report.logInfo(("Education Level is Selected "));
 
+        }catch(Exception e){
+            Report.logFail("Failed to Select education level" +e.getMessage());
+             throw e;
+        }
     }
+
     @Then("Click Educational field")
-    public void click_educational_field() {
+    public void clickEducationalField() {
+        try {
+           ClickEducationField();
+            Report.logInfo(("Education Field is Clicked "));
 
+        }catch(Exception e){
+            Report.logFail("Failed to click education Field" +e.getMessage());
+            throw e;
+        }
     }
+
     @Then("Select Educational field")
-    public void select_educational_field() {
+    public void selectEducationalField() {
+        try {
+           SelectEducationField();
+            Report.logInfo("Education Field  is Selected");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Education Field: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("Click Upload File{int}")
+    public void clickUploadFile(int arg0) {
+        try {
+            ClickUploadfile();
+            Report.logInfo("Upload File is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Upload file: " + e.getMessage());
+            throw e;
+        }
 
     }
-    @Then("Click Upload File1")
-    public void click_upload_file1() {
 
-    }
-    @Then("click ok button")
-    public void click_ok_button() {
 
-    }
-    @Then("Click Upload File2")
-    public void click_upload_file2() {
 
-    }
-    @Then("Click Upload File3")
-    public void click_upload_file3() {
-
+    @Then("click Ok button")
+    public void clickOkButton() throws InterruptedException {
+        try {
+            ClickCameraOkButton();
+            Report.logInfo("Ok Button is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Ok Button " + e.getMessage());
+            throw e;
+        }
     }
 }

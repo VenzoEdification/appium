@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Properties;
 
 public class SharedDriver extends EventFiringDecorator<WebDriver> {
-    private static AndroidDriver driver;
+    public static AndroidDriver driver;
 
     public static AndroidDriver getCapabilities() throws MalformedURLException {
         if (driver == null) {

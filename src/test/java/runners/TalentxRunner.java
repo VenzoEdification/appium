@@ -6,7 +6,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {
                 "src/test/resources/talentXFeature/TC001_Login.feature",
-                "src/test/resources/talentXFeature/TC002_Personal.feature"
+                "src/test/resources/talentXFeature/TC002_Personal.feature",
+                "src/test/resources/talentXFeature/TC003_Education.feature"
         },
         glue = {"stepDefinition/talentX", "hooks"},
         plugin = {

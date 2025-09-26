@@ -21,6 +21,8 @@ import utils.extent.CommonMethods;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Personal extends Report {
     AndroidDriver driver;
@@ -34,11 +36,11 @@ public class Personal extends Report {
     public WebElement Fathername;
     @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"personal-email-input\"]")
     public WebElement Email;
-    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@text=\"Address Line 1\"]")
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"AddressLine1-input\"]")
     public WebElement Address;
     @FindBy(how = How.XPATH,using = "//android.view.ViewGroup[@resource-id=\"city-input\"]")
     public WebElement City;
-    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@text=\"Pincode\"]")
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"pincode-input\"]")
     public WebElement Pincode;
     @FindBy(how = How.XPATH,using = "//android.view.ViewGroup[@content-desc=\"Update\"]")
     public WebElement Update;
@@ -46,7 +48,7 @@ public class Personal extends Report {
     public WebElement Uploadimage;
     @FindBy(how = How.XPATH, using = "//android.widget.TextView[@text=\"Personal\"]")
     public WebElement clickpersonal;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-A-\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-0\"]")
     public WebElement bloodgrouptype;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"search-text\"]")
     public WebElement searchcity;
@@ -68,7 +70,7 @@ public class Personal extends Report {
     public WebElement cameraok;
     @FindBy(how = How.XPATH, using = "//android.widget.Button[@content-desc=\"Crop\"]")
     public WebElement editcrop;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Chennai\"]/android.widget.TextView[0]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"city-0\"]")
     public WebElement cityname;
 
 
@@ -104,8 +106,8 @@ public class Personal extends Report {
     public Personal ClickBloodGroupType() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(bloodgrouptype));
+        driver.pressKey(new KeyEvent(AndroidKey.DPAD_UP));
         bloodgrouptype.click();
-
         return this;
     }
 
@@ -160,21 +162,21 @@ public class Personal extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(City));
         City.click();
-        Thread.sleep((7000));
+        Thread.sleep((5000));
         return this;
     }
     public Personal SearchCity() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(searchcity));
         searchcity.click();
-        Thread.sleep((7000));
+        Thread.sleep((4000));
         return this;
     }
-    public Personal EnterCityName() throws InterruptedException {
+    public Personal ClickCityName() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(cityname));
         cityname.click();
-        Thread.sleep((6000));
+        Thread.sleep((9000));
         return this;
     }
 
@@ -183,6 +185,8 @@ public class Personal extends Report {
         wait.until(ExpectedConditions.elementToBeClickable(searchcity));
         Thread.sleep(5000);
         searchcity.sendKeys(city);
+        Thread.sleep(5000);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         driver.hideKeyboard();
         return this;
     }
@@ -190,8 +194,8 @@ public class Personal extends Report {
     public Personal ClickPincode() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Pincode));
-        Pincode.clear();
         Pincode.click();
+        Pincode.clear();
         return this;
     }
 

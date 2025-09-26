@@ -17,6 +17,7 @@ Feature: Personal Details
     Then Click City
     Then Click Search City
     When Enter the City name "city"
+    Then Click Select City
     Then Click Pincode
     When Enter the PinCode "pincode"
     Then Click Upload Image

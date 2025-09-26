@@ -51,7 +51,7 @@ public class PersonalSteps extends Personal {
     public void clickNationality() {
         try {
             ClickNationality();
-            Report.logInfo("Clicked Nationality dropdown.");
+            Report.logInfo("Nationality is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Nationality: " + e.getMessage());
             throw e;
@@ -62,7 +62,7 @@ public class PersonalSteps extends Personal {
     public void clickIndian() {
         try {
             ClickIndian();
-            Report.logInfo("Selected Indian nationality.");
+            Report.logInfo("Nationality is Selected");
         } catch (Exception e) {
             Report.logFail("Failed to select Indian nationality: " + e.getMessage());
             throw e;
@@ -73,7 +73,7 @@ public class PersonalSteps extends Personal {
     public void clickBloodGroup() {
         try {
             ClickBloodGroup();
-            Report.logInfo("Clicked Blood Group dropdown.");
+            Report.logInfo("Blood Group is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Blood Group: " + e.getMessage());
             throw e;
@@ -84,7 +84,7 @@ public class PersonalSteps extends Personal {
     public Personal clickBloodGroupType()  {
         try {
             ClickBloodGroupType();
-            Report.logInfo("Entered Blood Group Type ");
+            Report.logInfo("Blood Group Type is Selected");
         } catch (Exception e) {
             Report.logFail("Failed to enter Blood Group: " + e.getMessage());
             throw e;
@@ -96,7 +96,7 @@ public class PersonalSteps extends Personal {
     public void clickFatherName() {
         try {
             ClickFathername();
-            Report.logInfo("Clicked Father Name field.");
+            Report.logInfo("Father Name field is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Father Name: " + e.getMessage());
             throw e;
@@ -119,7 +119,7 @@ public class PersonalSteps extends Personal {
     public void clickEmail() {
         try {
             ClickEmail();
-            Report.logInfo("Clicked Email field.");
+            Report.logInfo("Email is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Email: " + e.getMessage());
             throw e;
@@ -130,7 +130,7 @@ public class PersonalSteps extends Personal {
     public void enterEmail() {
         try {
             EnterEmail();
-            Report.logInfo("Entered Email:" + CommonMethods.generateRandomEmail());
+            Report.logInfo("Entered Email as: "+ CommonMethods.generateRandomEmail());
         } catch (Exception e) {
             Report.logFail("Failed to enter Email: " + e.getMessage());
             throw e;
@@ -141,7 +141,7 @@ public class PersonalSteps extends Personal {
     public void clickAddressLine() {
         try {
             ClickAddressLine();
-            Report.logInfo("Clicked Address Line field.");
+            Report.logInfo("Address Line is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Address Line: " + e.getMessage());
             throw e;
@@ -153,7 +153,7 @@ public class PersonalSteps extends Personal {
         try {
             String value = testData.get(key);
             EnterAddressLine1(value);
-            Report.logInfo("Entered Address Line: " + value);
+            Report.logInfo("Entered Address Line as: " + value);
         } catch (Exception e) {
             Report.logFail("Failed to enter Address Line: " + e.getMessage());
             throw e;
@@ -164,7 +164,7 @@ public class PersonalSteps extends Personal {
     public void clickCity() throws InterruptedException {
         try {
             ClickCity();
-            Report.logInfo("Clicked City field.");
+            Report.logInfo("City is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click City: " + e.getMessage());
             throw e;
@@ -177,7 +177,7 @@ public class PersonalSteps extends Personal {
         try {
             String value = testData.get(key);
             EnterCity(value);
-            Report.logInfo("Entered City: " + value);
+            Report.logInfo("Entered City as: " + value);
         } catch (Exception e) {
             Report.logFail("Failed to enter City: " + e.getMessage());
             throw e;
@@ -188,7 +188,7 @@ public class PersonalSteps extends Personal {
     public void clickPincode() {
         try {
             ClickPincode();
-            Report.logInfo("Clicked Pincode field.");
+            Report.logInfo("Pincode is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Pincode: " + e.getMessage());
             throw e;
@@ -200,7 +200,7 @@ public class PersonalSteps extends Personal {
         try {
             String value = testData.get(key);
             EnterPincode(value);
-            Report.logInfo("Entered Pincode: " + value);
+            Report.logInfo("Entered Pincode as: " + value);
         } catch (Exception e) {
             Report.logFail("Failed to enter Pincode: " + e.getMessage());
             throw e;
@@ -211,7 +211,7 @@ public class PersonalSteps extends Personal {
     public void clickUploadImage() throws InterruptedException {
         try {
             UploadImage();
-            Report.logInfo("Clicked Upload Image button.");
+            Report.logInfo("Upload Profile Image is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Upload Image: " + e.getMessage());
             throw e;
@@ -223,7 +223,7 @@ public class PersonalSteps extends Personal {
     public void clickUpdateButton() {
         try {
             ClickUpdateButton();
-            Report.logInfo("Clicked Update button.");
+            Report.logInfo("Update Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Update button: " + e.getMessage());
             throw e;
@@ -233,7 +233,7 @@ public class PersonalSteps extends Personal {
     @Then("The Profile page should display")
     public void theProfilePageShouldDisplay() {
         try {
-            Report.logInfo("Profile page displayed successfully!");
+            Report.logInfo("Profile page displayed successfully");
         } catch (Exception e) {
             Report.logFail("Profile page validation failed: " + e.getMessage());
             throw e;
@@ -245,7 +245,7 @@ public class PersonalSteps extends Personal {
     public void clickCamera() throws InterruptedException {
         try {
             ClickCamera();
-            Report.logInfo("CameraOption is Clicked:");
+            Report.logInfo("CameraOption is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Camera: " + e.getMessage());
             throw e;
@@ -257,7 +257,7 @@ public class PersonalSteps extends Personal {
     public void clickCameraButton() throws InterruptedException {
         try {
             ClickTakePicture();
-            Report.logInfo("CameraButton is Clicked:");
+            Report.logInfo("CameraButton is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Camera: " + e.getMessage());
             throw e;
@@ -268,7 +268,7 @@ public class PersonalSteps extends Personal {
     public void clickOkButton() throws InterruptedException {
         try {
             ClickCameraOkButton();
-            Report.logInfo("Ok Button is Clicked:");
+            Report.logInfo("Ok Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Ok Button: " + e.getMessage());
             throw e;
@@ -279,7 +279,7 @@ public class PersonalSteps extends Personal {
     public void clickCropButton() throws InterruptedException {
         try {
             ClickEditCrop();
-            Report.logInfo("Ok Button is Clicked:");
+            Report.logInfo("Ok Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Ok Button: " + e.getMessage());
             throw e;
@@ -305,19 +305,19 @@ public class PersonalSteps extends Personal {
             SearchCity();
             Report.logInfo("Entered City Name");
         } catch (Exception e) {
-            Report.logFail("Failed to enter DOB: " + e.getMessage());
+            Report.logFail("Failed to click search city: " + e.getMessage());
             throw e;
         }
     }
 
-    @Then("CLick Entered CityName")
-    public void clickEnteredCityName() throws InterruptedException {
+    @Then("Click Select City")
+    public void clickSelectCity() throws InterruptedException {
         try {
 
-            EnterCityName();
+            ClickCityName();
             Report.logInfo("Entered City Name");
         } catch (Exception e) {
-            Report.logFail("Failed to enter DOB: " + e.getMessage());
+            Report.logFail("Failed to click city name: " + e.getMessage());
             throw e;
         }
     }
