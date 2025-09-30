@@ -17,7 +17,7 @@ public class Report {
             String reportPath = System.getProperty("user.dir") + "/reports/TestReport_" + timeStamp + ".html";
 
             ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
-            spark.config().setReportName("Mobile Automation Execution Report");
+            spark.config().setReportName("Talntx Mobile Automation Execution Report");
             spark.config().setDocumentTitle("Test Execution Summary");
 
             extent = new ExtentReports();

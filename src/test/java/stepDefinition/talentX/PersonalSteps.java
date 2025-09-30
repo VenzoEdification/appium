@@ -62,7 +62,7 @@ public class PersonalSteps extends Personal {
     public void clickIndian() {
         try {
             ClickIndian();
-            Report.logInfo("Nationality is Selected");
+            Report.logInfo("Indian is Selected");
         } catch (Exception e) {
             Report.logFail("Failed to select Indian nationality: " + e.getMessage());
             throw e;
@@ -279,7 +279,7 @@ public class PersonalSteps extends Personal {
     public void clickCropButton() throws InterruptedException {
         try {
             ClickEditCrop();
-            Report.logInfo("Ok Button is Clicked");
+            Report.logInfo("Edit Ok Button is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click Ok Button: " + e.getMessage());
             throw e;
@@ -315,7 +315,7 @@ public class PersonalSteps extends Personal {
         try {
 
             ClickCityName();
-            Report.logInfo("Entered City Name");
+            Report.logInfo("City Name is Clicked");
         } catch (Exception e) {
             Report.logFail("Failed to click city name: " + e.getMessage());
             throw e;

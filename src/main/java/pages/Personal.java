@@ -106,7 +106,6 @@ public class Personal extends Report {
     public Personal ClickBloodGroupType() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(bloodgrouptype));
-        driver.pressKey(new KeyEvent(AndroidKey.DPAD_UP));
         bloodgrouptype.click();
         return this;
     }
@@ -162,21 +161,21 @@ public class Personal extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(City));
         City.click();
-        Thread.sleep((5000));
+        Thread.sleep((3000));
         return this;
     }
     public Personal SearchCity() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(searchcity));
         searchcity.click();
-        Thread.sleep((4000));
+        Thread.sleep((3000));
         return this;
     }
     public Personal ClickCityName() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(cityname));
         cityname.click();
-        Thread.sleep((9000));
+        Thread.sleep((5000));
         return this;
     }
 

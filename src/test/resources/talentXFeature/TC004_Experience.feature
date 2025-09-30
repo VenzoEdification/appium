@@ -9,5 +9,11 @@ Feature: Experience Details
     Then Select Industry
     Then Click Skill
     Then Select Skill
+    Then Click ESIC
+    Then Select ESIC Option
+    When Enter ESIC
+    Then Click PF
+    Then Select PF option
+    When Enter PF
     Then Click Update Button
     Then The Profile page should display

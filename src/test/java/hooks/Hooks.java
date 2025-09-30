@@ -21,7 +21,7 @@ public class Hooks {
 
         Report.createTest(scenarioName);
         Report.logInfo("Scenario started: " + scenarioName);
-        Report.logInfo("App launched and scenario started");
+
 
 
     }

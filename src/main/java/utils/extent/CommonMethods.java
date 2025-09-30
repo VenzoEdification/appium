@@ -1,13 +1,16 @@
 package utils.extent;
 
+import com.google.gson.internal.bind.JsonTreeReader;
 import org.openqa.selenium.Dimension;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import static utils.SharedDriver.driver;
 
 public class CommonMethods {
+    private static final Random random = new Random();
     public static String generateRandomEmail() {
         String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
         StringBuilder randomEmail = new StringBuilder();
@@ -21,22 +24,37 @@ public class CommonMethods {
         return randomEmail.toString() + "@gmail.com";
 
     }
+    public static String generateRandomESIC() {
+        StringBuilder esic = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            esic.append(random.nextInt(10));
+        }
+        return esic.toString();
+    }
+    public static String generateRandomPAN() {
+        Random random = new Random();
+        StringBuilder panBuilder = new StringBuilder();
 
-    public static void slightScrollUp() {
-        Dimension size = driver.manage().window().getSize();
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.6);
-        int endY   = (int) (size.height * 0.4);
+        for (int i = 0; i < 5; i++) {
+            char randomLetter = (char) (random.nextInt(26) + 'A');
+            panBuilder.append(randomLetter);
+        }
 
-        Map<String, Object> args = new HashMap<>();
-        args.put("left", startX);
-        args.put("top", endY);                // top should be the smaller Y
-        args.put("width", 1);                 // minimum width (cannot be 0)
-        args.put("height", startY - endY);    // positive height
-        args.put("direction", "up");
-        args.put("percent", 0.2);             // small scroll
-        driver.executeScript("mobile: swipeGesture", args);
+        for (int i = 0; i < 4; i++) {
+            int randomDigit = random.nextInt(10);
+            panBuilder.append(randomDigit);
+        }
+        char lastLetter = (char) (random.nextInt(26) + 'A');
+        panBuilder.append(lastLetter);
 
+        return panBuilder.toString();
+    }
+    public static String generateRandomPF() {
+        StringBuilder pf = new StringBuilder();
+        for (int i = 0; i < 12; i++) {
+            pf.append(random.nextInt(12));  // append digits 0-9
+        }
+        return pf.toString();
     }
 }
 

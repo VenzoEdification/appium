@@ -124,6 +124,19 @@ public class LoginSteps extends LoginUI {
 
     }
 
-}
+    @Then("CLick Allow Button")
+    public LoginSteps clickAllowButton() throws InterruptedException {
+            try {
+                ClickAllownotification();
+                Report.logInfo("Clicked Allow button.");
+            } catch (Exception e) {
+                Report.logFail("Failed to click Allow button: " + e.getMessage());
+                throw e;
+            }
+
+            return this;
+        }
+    }
+
 
 

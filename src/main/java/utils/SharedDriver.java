@@ -20,9 +20,11 @@ public class SharedDriver extends EventFiringDecorator<WebDriver> {
             DesiredCapabilities capabilities = new DesiredCapabilities();
 
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
-            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Galaxy A30s");
-            capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
-            capabilities.setCapability(MobileCapabilityType.UDID, "RZ8N10MVXFX");
+            //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Galaxy A30s");
+            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Redmi Note 11 Pro 5G");
+            capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13");
+            //capabilities.setCapability(MobileCapabilityType.UDID, "RZ8N10MVXFX");
+            capabilities.setCapability(MobileCapabilityType.UDID, "29422bee4287");
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
             capabilities.setCapability("appPackage", "com.venzo.talntx");
             capabilities.setCapability("appActivity", "com.venzo.talntx.MainActivity");
