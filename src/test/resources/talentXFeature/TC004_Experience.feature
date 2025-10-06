@@ -1,6 +1,6 @@
 Feature: Experience Details
 
-  Scenario: Experience Details
+  Scenario:TC004_Experience Details
     Given The Profile Details is visible
     Then Click Experience Tab
     Then Click Experience in years

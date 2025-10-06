@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class Experience extends Report {
     private AndroidDriver driver;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Experience\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Experience\"]")
     public WebElement Experience;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"experience-input\"]")
     public WebElement Experienceinyears;
@@ -30,7 +30,7 @@ public class Experience extends Report {
     public WebElement skillfield;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"esic-input\"]")
     public WebElement esic;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-0\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Available\"]")
     public WebElement esicoption;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"esic-no-input\"]")
     public WebElement Enteresic;
@@ -80,16 +80,19 @@ public class Experience extends Report {
         Thread.sleep(3000);
         return this;
     }
-    public Experience SelectSkill() {
+    public Experience SelectSkill() throws InterruptedException {
         skillfield.click();
+        Thread.sleep(3000);
         return this;
     }
-    public Experience ClickESIC() {
+    public Experience ClickESIC() throws InterruptedException {
         esic.click();
+        Thread.sleep(3000);
         return this;
     }
-    public Experience SelectESIC() {
+    public Experience SelectESIC() throws InterruptedException {
         esicoption.click();
+
         return this;
     }
     public Experience EnterESIC() {
@@ -101,8 +104,9 @@ public class Experience extends Report {
             driver.hideKeyboard();
         return this;
     }
-    public Experience ClickPF() {
+    public Experience ClickPF() throws InterruptedException {
         pf.click();
+        Thread.sleep(3000);
         return this;
     }
     public Experience SelectPF() {

@@ -19,11 +19,11 @@ public class Education extends Report {
     public WebElement educationtab;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"education-level\"]")
     public WebElement educationlevel;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-1\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-2\"]")
     public WebElement selectlevel;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"education-field\"]")
     public WebElement educationfield;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-2\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-3\"]")
     public WebElement selectfield;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Upload File\"]")
     public WebElement uploadfile;

@@ -1,6 +1,6 @@
 Feature: Login Mobile App
 
-  Scenario: Login Scenario
+  Scenario:TC_001_Login Scenario
     Given the TALENTx app is launched
     Then CLick Allow Button
     When enter the value "phoneNumber"

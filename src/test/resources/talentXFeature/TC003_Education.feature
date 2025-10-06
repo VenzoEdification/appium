@@ -1,6 +1,6 @@
 Feature: Education Details
 
-  Scenario: Education Details
+  Scenario:TC0003_Education Details
     Given The Profile Details is visible
     Then Click Education Tab
     Then Click  Highest Education Level

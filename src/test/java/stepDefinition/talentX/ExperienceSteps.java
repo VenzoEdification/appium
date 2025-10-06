@@ -25,7 +25,7 @@ public class ExperienceSteps extends Experience {
             ClickExperienceTab();
             Report.logInfo("Experience Tab is Clicked");
         }catch (Exception e){
-            Report.logFail("Failed yo Click Experience Tab:" +e.getMessage());
+            Report.logFail("Failed to Click Experience Tab:" +e.getMessage());
         }
         Excelutil reader = new Excelutil();
         testData = reader.getRowData("input/Profile.xlsx", "Experience", 1);

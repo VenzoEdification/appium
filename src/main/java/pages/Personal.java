@@ -154,7 +154,7 @@ public class Personal extends Report {
         Address.clear();
         Address.sendKeys(AddressLine1);
         driver.hideKeyboard();
-        Thread.sleep(4000);
+        Thread.sleep(3000);
         return this;
     }
     public Personal ClickCity() throws InterruptedException {
@@ -184,7 +184,7 @@ public class Personal extends Report {
         wait.until(ExpectedConditions.elementToBeClickable(searchcity));
         Thread.sleep(5000);
         searchcity.sendKeys(city);
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         driver.hideKeyboard();
         return this;

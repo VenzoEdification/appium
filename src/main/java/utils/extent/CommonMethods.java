@@ -3,14 +3,17 @@ package utils.extent;
 import com.google.gson.internal.bind.JsonTreeReader;
 import org.openqa.selenium.Dimension;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import utils.extent.CommonMethods;
 
 import static utils.SharedDriver.driver;
 
 public class CommonMethods {
     private static final Random random = new Random();
+    private static final SecureRandom rnd = new SecureRandom();
     public static String generateRandomEmail() {
         String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
         StringBuilder randomEmail = new StringBuilder();
@@ -55,6 +58,16 @@ public class CommonMethods {
             pf.append(random.nextInt(12));  // append digits 0-9
         }
         return pf.toString();
+    }
+    public static String generateAccount(int length) {
+        if (length <= 0) throw new IllegalArgumentException("length must be > 0");
+        StringBuilder sb = new StringBuilder(length);
+        // ensure first digit != '0'
+        sb.append((char)('1' + rnd.nextInt(9)));
+        for (int i = 1; i < length; i++) {
+            sb.append((char)('0' + rnd.nextInt(10)));
+        }
+        return sb.toString();
     }
 }
 

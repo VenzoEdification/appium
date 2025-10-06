@@ -20,5 +20,10 @@ Feature: Personal Details
     Then Click Select City
     Then Click Pincode
     When Enter the PinCode "pincode"
+    Then Click Upload Image
+    Then Click Camera
+    Then Click Camera Button
+    Then Click Ok Button
+    Then Click Crop Button
     Then Click Update Button
     Then The Profile page should display
