@@ -7,5 +7,8 @@ Feature: Education Details
     Then Select Highest Educational Level
     Then Click Educational field
     Then Select Educational field
+    Then Click Upload document1
+    Then Click Upload document2
+    Then Click Upload document3
     Then Click Update Button
     Then The Profile page should display

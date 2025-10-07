@@ -15,9 +15,9 @@ import java.time.Duration;
 
 public class ContractorandEmployer extends Report {
     AndroidDriver driver;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Education\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Contractor & Employer\"]")
     public WebElement contractorandemployertab;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Education\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"History\"]")
     public WebElement historybutton;
 
 

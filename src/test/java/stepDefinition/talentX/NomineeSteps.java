@@ -63,7 +63,7 @@ public class NomineeSteps extends NomineeInformation {
     @Then("Click Nominee Aadhar Number")
     public void click_nominee_aadhar_number() {
         try{
-           ClickNomineeName();
+          ClickNomineeAadharNumber();
             Report.logInfo("Nominee Name is Clicked");
         }catch (Exception e){
             Report.logFail("Failed to Click Nominee Name:" +e.getMessage());

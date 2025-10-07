@@ -16,20 +16,20 @@ import java.time.Duration;
 public class BankAccount {
     private String generatedAccountNumber;
     AndroidDriver driver;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Bank Account\"]")
     public WebElement bankaccounttab;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"bank-name\"]")
     public WebElement bankname;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"account-Holder-name\"]")
     public WebElement accountholdername;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"branch-name\"]")
     public WebElement branchname;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"ifsc-code\"]")
     public WebElement ifsc;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"account-number\"]")
     public WebElement accountnumber;
 
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"retype-account-number\"]")
     public WebElement retypeaccount;
 
 

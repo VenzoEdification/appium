@@ -92,4 +92,17 @@ public class EducationSteps extends Education {
             throw e;
         }
     }
+
+    @Then("Click Upload document{int}")
+    public void clickUploadDocument(int arg0) throws InterruptedException {
+        try {
+            UploadDocument1();
+            UploadDocument2();
+            UploadDocument3();
+            Report.logInfo("Documents is Uploaded");
+        } catch (Exception e) {
+            Report.logFail("Failed to upload documents " + e.getMessage());
+            throw e;
+        }
+    }
 }

@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class Experience extends Report {
     private AndroidDriver driver;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Experience\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Experience\"]")
     public WebElement Experience;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"experience-input\"]")
     public WebElement Experienceinyears;

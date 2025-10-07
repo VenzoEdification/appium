@@ -58,17 +58,6 @@ public class GovernmentIdSteps extends GovernmentIDs {
         }
     }
 
-    @Then("Click Verify")
-    public void click_verify() {
-        try {
-            ClickVerify();
-            Report.logInfo("Verify  is Clicked");
-        } catch (Exception e) {
-            Report.logFail("Failed to Verify: " + e.getMessage());
-            throw e;
-        }
-
-    }
 
     @Then("Click PAN Number")
     public void click_pan_number() {
@@ -108,10 +97,10 @@ public class GovernmentIdSteps extends GovernmentIDs {
     }
 
     @Then("Click Upload Pan")
-    public void click_upload_pan() {
+    public void click_upload_pan() throws InterruptedException {
         try {
-           ClickUploadPAN();
-            Report.logInfo("PAN Upload is Clicked");
+        ClickUploadPAN();
+            Report.logInfo("PAN Document is  Uploaded");
         } catch (Exception e) {
             Report.logFail("Failed to PAN Upload: " + e.getMessage());
             throw e;
@@ -119,4 +108,75 @@ public class GovernmentIdSteps extends GovernmentIDs {
 
     }
 
+    @Then("Click Aadhar Verify")
+    public void clickAadharVerify() throws InterruptedException {
+        try {
+            ClickAadharVerify();
+            Report.logInfo("Aadhar Verify  is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to Aadhar Verify: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @Then("Click PAN Verify")
+    public void clickPANVerify() throws InterruptedException {
+        try {
+            ClickPanVerify();
+            Report.logInfo("Pan Verify  is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to Pan Verify: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @When("Enter and Verify Aadhar Number {string}")
+    public void enterAndVerifyAadharNumber(String key) {
+        try {
+
+            String value = testData.get(key);
+            Report.logInfo("Aadhar Number  :" + value);
+            AadharFlow(value);
+        } catch (Exception e) {
+            Report.logInfo("Failed to enter Aadhar Number " + e.getMessage());
+
+        }
+    }
+
+    @When("Enter and Verify PAN Number {string}")
+    public void enterAndVerifyPANNumber(String key) {
+        try {
+
+            String value = testData.get(key);
+            Report.logInfo("PAN Number  :" + value);
+           PANFlow(value);
+        } catch (Exception e) {
+            Report.logInfo("Failed to enter PAN Number " + e.getMessage());
+
+        }
+    }
+
+    @Then("Upload Aadhar")
+    public void uploadAadhar() throws InterruptedException {
+        try {
+           UploadAadhar();
+            Report.logInfo(" Aadhar Document is Uploaded");
+        } catch (Exception e) {
+            Report.logFail("Failed to Aadhar Upload: " + e.getMessage());
+            throw e;
+        }
+
+
+    }
+
+    @Then("Upload Pan")
+    public void uploadPan() throws InterruptedException {
+        try {
+            UploadPAN();
+            Report.logInfo("PAN Document is Uploaded");
+        } catch (Exception e) {
+            Report.logFail("Failed to PAN Upload: " + e.getMessage());
+            throw e;
+        }
+    }
 }

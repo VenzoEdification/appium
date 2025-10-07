@@ -29,9 +29,9 @@ public class Hooks {
     @After
     public void afterScenario(Scenario scenario) {
         if (scenario.isFailed()) {
-            Report.logFail("Scenario FAILED: " + scenario.getName());
+            Report.logFail("Scenario Failed: " + scenario.getName());
         } else {
-            Report.logPass("Scenario PASSED: " + scenario.getName());
+            Report.logPass("Scenario Passed: " + scenario.getName());
         }
 
         Report.clearTest();

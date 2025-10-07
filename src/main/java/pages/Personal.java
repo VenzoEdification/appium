@@ -46,7 +46,7 @@ public class Personal extends Report {
     public WebElement Update;
     @FindBy(how = How.XPATH,using = "//android.view.ViewGroup[@resource-id=\"profile-edit-button\"]")
     public WebElement Uploadimage;
-    @FindBy(how = How.XPATH, using = "//android.widget.TextView[@text=\"Personal\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Personal\"]")
     public WebElement clickpersonal;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-0\"]")
     public WebElement bloodgrouptype;

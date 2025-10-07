@@ -15,15 +15,15 @@ import java.time.Duration;
 
 public class NomineeInformation extends Report {
     AndroidDriver driver;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Nominee\"]")
     public WebElement Nomineetab;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"nominee-name\"]")
     public WebElement Nomineename;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"nominee-name-aadhaar\"]")
     public WebElement NomineeAadharnumber;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Relationship\"]")
     public WebElement relatioship;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nationality-select\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-2\"]")
     public WebElement selectrelationship;
 
 
