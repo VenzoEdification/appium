@@ -175,16 +175,16 @@ public class Personal extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(cityname));
         cityname.click();
-        Thread.sleep((5000));
+        Thread.sleep((2000));
         return this;
     }
 
     public Personal EnterCity(String city) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(searchcity));
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         searchcity.sendKeys(city);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         driver.hideKeyboard();
         return this;
@@ -246,7 +246,7 @@ public class Personal extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(dob));
         dob.click();
-        Thread.sleep(4000);
+        Thread.sleep(3000);
         ok.click();
         return this;
     }

@@ -106,6 +106,7 @@ public class Education extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(cameraok));
         cameraok.click();
+        Thread.sleep(3000);
         return this;
     }
     public Education UploadDocument1() throws InterruptedException {

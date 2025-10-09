@@ -19,6 +19,10 @@ public class ContractorandEmployer extends Report {
     public WebElement contractorandemployertab;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"History\"]")
     public WebElement historybutton;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"history-back\"]/android.widget.ImageView")
+    public WebElement historybackbutton;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"back-button\"]")
+    public WebElement contractorbackbutton;
 
 
     public ContractorandEmployer() throws MalformedURLException {
@@ -38,4 +42,14 @@ public class ContractorandEmployer extends Report {
         historybutton.click();
         return this;
     }
+    public ContractorandEmployer ClickBackButton() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(historybackbutton));
+        historybackbutton.click();
+        Thread.sleep(2000);
+        contractorbackbutton.click();
+        return this;
+    }
+
+
 }

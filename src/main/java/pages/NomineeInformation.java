@@ -1,6 +1,9 @@
 package pages;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
+import io.cucumber.java.mk_latn.No;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -21,10 +24,22 @@ public class NomineeInformation extends Report {
     public WebElement Nomineename;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"nominee-name-aadhaar\"]")
     public WebElement NomineeAadharnumber;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Relationship\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"relationship\"]")
     public WebElement relatioship;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-2\"]")
     public WebElement selectrelationship;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"nominee-dob-button\"]")
+    public WebElement dob;
+    @FindBy(how = How.XPATH, using = "//android.widget.Button[@resource-id=\"android:id/button1\"]")
+    public WebElement okbutton;
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"AddressLine1-input\"]")
+    public WebElement Address;
+    @FindBy(how = How.XPATH,using = "//android.view.ViewGroup[@resource-id=\"city-input\"]")
+    public WebElement City;
+    @FindBy(how = How.XPATH,using = "//android.widget.EditText[@resource-id=\"pincode-input\"]")
+    public WebElement Pincode;
+    @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"search-text\"]")
+    public WebElement searchcity;
 
 
 
@@ -33,7 +48,7 @@ public class NomineeInformation extends Report {
         PageFactory.initElements(driver, this);
     }
     public NomineeInformation ClickNomineeTab()  {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(Nomineetab));
         Nomineetab.click();
         return this;
@@ -67,7 +82,7 @@ public class NomineeInformation extends Report {
         return this;
     }
     public NomineeInformation ClickRelationship()  {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(relatioship));
         relatioship.click();
         return this;
@@ -78,4 +93,39 @@ public class NomineeInformation extends Report {
         selectrelationship.click();
         return this;
     }
+    public NomineeInformation ClickDOB() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(dob));
+        dob.click();
+        Thread.sleep(3000);
+        okbutton.click();
+        return this;
+    }
+    public NomineeInformation EnterCity(String city) throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(searchcity));
+        Thread.sleep(3000);
+        searchcity.sendKeys(city);
+        Thread.sleep(2000);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        driver.hideKeyboard();
+        return this;
+    }
+    public NomineeInformation EnterAddressLine1(String AddressLine1) throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(Address));
+        Address.clear();
+        Address.sendKeys(AddressLine1);
+        driver.hideKeyboard();
+        Thread.sleep(3000);
+        return this;
+    }
+    public NomineeInformation EnterPincode(String pincode) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(Pincode));
+        Pincode.sendKeys(pincode);
+        driver.hideKeyboard();
+        return this;
+    }
+
 }

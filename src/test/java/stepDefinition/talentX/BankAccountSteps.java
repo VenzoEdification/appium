@@ -174,7 +174,7 @@ public class BankAccountSteps extends BankAccount {
     @When("Enter Retype Account Number")
     public void enter_retype_account_number() {
         try {
-            EnterAccountNumber();
+            EnterRetypeAccountNumber();
             Report.logInfo("Enter RetypeAccount Number: " +CommonMethods.generateAccount(10));
         } catch (Exception e) {
             Report.logFail("Failed to enter Account Number: " + e.getMessage());

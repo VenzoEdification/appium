@@ -15,4 +15,5 @@ Feature: Bank Account Details
   When Enter Account Number
   Then Click Retype Account Number
   When Enter Retype Account Number
+    Then Click Update Button
 

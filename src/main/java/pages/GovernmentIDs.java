@@ -41,7 +41,7 @@ public class GovernmentIDs extends Report {
     public WebElement takepicture;
     @FindBy(how = How.XPATH, using = "//android.widget.Button[@content-desc=\"OK\"]")
     public WebElement cameraok;
-    @FindBy(how = How.XPATH, using = "//android.widget.TextView[@resource-id=\"delete-doc-text\"]")
+    @FindBy(how = How.XPATH, using = "//android.widget.TextView[@resource-id=\"Aadhaar-delete-doc\"]")
     public WebElement aadhardelete;
     @FindBy(how = How.XPATH, using = "//android.widget.TextView[@resource-id=\"Pan-delete-doc\"]")
     public WebElement pandelete;
@@ -55,7 +55,7 @@ public class GovernmentIDs extends Report {
     }
 
     public GovernmentIDs ClickGovernmentIDs() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(GovernmentIDstab));
         GovernmentIDstab.click();
         return this;
@@ -174,9 +174,6 @@ public class GovernmentIDs extends Report {
         return this;
     }
 
-
-
-
     public GovernmentIDs ClickUploadAadhar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Uploadaadhar));
@@ -187,7 +184,7 @@ public class GovernmentIDs extends Report {
     public GovernmentIDs UploadPAN() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-        if (!driver.findElements(By.xpath("//android.widget.EditText[@resource-id=\"pan-number\"]")).isEmpty()) {
+        if (!driver.findElements(By.xpath("//android.view.ViewGroup[@content-desc=\"Upload Pan\"]")).isEmpty()) {
            ClickUploadPAN();
             ClickCamera();
             ClickTakePicture();
@@ -200,7 +197,6 @@ public class GovernmentIDs extends Report {
             ClickTakePicture();
             ClickCameraOkButton();
         }
-
         return this;
     }
     public GovernmentIDs ClickUploadPAN() {
@@ -238,6 +234,7 @@ public class GovernmentIDs extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(cameraok));
         cameraok.click();
+        Thread.sleep(2000);
         return this;
     }
 

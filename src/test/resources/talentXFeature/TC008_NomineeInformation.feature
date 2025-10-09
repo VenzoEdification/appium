@@ -9,13 +9,13 @@ Given The Profile page should display
   When Enter Nominee Aadhar Number "Nominee Aadhar Number"
   Then Click Relationship
   Then Select Relationship
-  Then Click Date of Birth
+  Then Click DOB
   Then Click Address Line
-  When Enter Address Line "Address Line"
+  When Enter Address  "Address"
   Then Click City
   Then Click Search City
-  When Enter the City name "city"
+  When Enter the City  "city"
   Then Click Select City
   Then Click Pincode
-  When Enter the PinCode "pincode"
+  When Enter the Pincode "pincode"
   Then Click Update Button

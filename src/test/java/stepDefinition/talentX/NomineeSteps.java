@@ -64,9 +64,9 @@ public class NomineeSteps extends NomineeInformation {
     public void click_nominee_aadhar_number() {
         try{
           ClickNomineeAadharNumber();
-            Report.logInfo("Nominee Name is Clicked");
+            Report.logInfo("Nominee Aadhar is Clicked");
         }catch (Exception e){
-            Report.logFail("Failed to Click Nominee Name:" +e.getMessage());
+            Report.logFail("Failed to Click Nominee Aadhar:" +e.getMessage());
         }
 
     }
@@ -100,10 +100,60 @@ public class NomineeSteps extends NomineeInformation {
     public void select_relationship() {
         try{
           SelectRelationship();
-            Report.logInfo("Relationship is selected :"+selectrelationship);
+            Report.logInfo("Relationship is selected");
         }catch (Exception e){
             Report.logFail("Failed to  select relationship :" +e.getMessage());
         }
 
+    }
+
+    @Then("Click DOB")
+    public void clickDOB() {
+        try {
+            ClickDOB();
+            Report.logInfo("DOB is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to Click DOB :" + e.getMessage());
+        }
+
+    }
+
+    @When("Enter Address  {string}")
+    public void enterAddress(String key) throws InterruptedException {
+        try {
+            String value = testData.get(key);
+            EnterAddressLine1(value);
+            Report.logInfo("Entered Address Line as: " + value);
+        } catch (Exception e) {
+            Report.logFail("Failed to enter Address Line: " + e.getMessage());
+            throw e;
+        }
+
+
+
+    }
+
+    @When("Enter the City  {string}")
+    public void enterTheCity(String key) throws InterruptedException {
+        try {
+            String value = testData.get(key);
+            EnterCity(value);
+            Report.logInfo("Entered City as: " + value);
+        } catch (Exception e) {
+            Report.logFail("Failed to enter City: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @When("Enter the Pincode {string}")
+    public void enterThePincode(String key) {
+        try {
+            String value = testData.get(key);
+            EnterPincode(value);
+            Report.logInfo("Entered Pincode as: " + value);
+        } catch (Exception e) {
+            Report.logFail("Failed to enter Pincode: " + e.getMessage());
+            throw e;
+        }
     }
 }

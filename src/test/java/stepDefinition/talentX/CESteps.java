@@ -37,7 +37,15 @@ public class CESteps extends ContractorandEmployer {
     }
 
     @Then("CLick Back Button")
-    public void clickBackButton() {
+    public void clickBackButton() throws InterruptedException {
+        try {
+            ClickBackButton();
+            Report.logInfo("Back Button is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click Back Button: " + e.getMessage());
+            throw e;
+        }
+
 
     }
 }

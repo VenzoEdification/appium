@@ -22,9 +22,9 @@ public class Experience extends Report {
     public WebElement Experienceinyears;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"industry-input\"]")
     public WebElement Industry;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-1\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-2\"]")
     public WebElement Industryfield;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"skill-input\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Skill\"]")
     public WebElement skill;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"option-1\"]")
     public WebElement skillfield;
@@ -48,6 +48,8 @@ public class Experience extends Report {
         PageFactory.initElements(driver, this);
     }
     public Experience ClickExperienceTab() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.elementToBeClickable(Experience));
         Experience.click();
         return this;
     }
@@ -71,13 +73,12 @@ public class Experience extends Report {
     }
     public Experience SelectIndustry() throws InterruptedException {
         Industryfield.click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         return this;
     }
     public Experience ClickSkill() throws InterruptedException {
-        skill.clear();
         skill.click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         return this;
     }
     public Experience SelectSkill() throws InterruptedException {

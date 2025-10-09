@@ -7,8 +7,17 @@ Feature: Education Details
     Then Select Highest Educational Level
     Then Click Educational field
     Then Select Educational field
-    Then Click Upload document1
-    Then Click Upload document2
-    Then Click Upload document3
+    Then Click Upload File1
+    Then Click Camera
+    Then Click Camera Button
+    Then click Ok button
+    Then Click Upload File2
+    Then Click Camera
+    Then Click Camera Button
+    Then click Ok button
+    Then Click Upload File3
+    Then Click Camera
+    Then Click Camera Button
+    Then click Ok button
     Then Click Update Button
     Then The Profile page should display

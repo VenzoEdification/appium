@@ -1,6 +1,6 @@
 Feature: Login Mobile App
 
-  Scenario:TC_001_Login Scenario
+  Scenario:TC001_Login Scenario
     Given the TALENTx app is launched
     When enter the value "phoneNumber"
     When click Terms and Agreement
