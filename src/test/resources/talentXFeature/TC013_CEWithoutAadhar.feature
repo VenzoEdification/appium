@@ -1,4 +1,16 @@
-Feature: Personal Details
+Feature: Contractor Employer Without Aadhar
+
+  Scenario: TC0013_Contractor Employer Without Aadhar
+    Given HomePage is Visible
+    Then Click Add Talent Icon
+    And Enter mobileNumber
+    And Enter aadharNumber
+    Then Click Without AadharNumber
+    Then Enter TalentName "Name"
+    Then Enter DateofBirth "DOB"
+    Then Select Gender
+    Then Click Confirm Button
+
 
   Scenario: TC002_Personal Details
     Given The Profile Details is visible

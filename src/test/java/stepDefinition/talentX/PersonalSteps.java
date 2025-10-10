@@ -288,12 +288,11 @@ public class PersonalSteps extends Personal {
 
     @Then("Click Date of Birth")
     public void clickDateOfBirth() throws InterruptedException {
-        try {
-
+        try{
             CLickDateofBirth();
-            Report.logInfo("Entered DOB successfully");
-        } catch (Exception e) {
-            Report.logFail("Failed to enter DOB: " + e.getMessage());
+            Report.logInfo("Date of Birth is clicked");
+        }catch (Exception e){
+            Report.logFail("Failed to Select Date of Birth:" +e.getMessage());
             throw e;
         }
     }
@@ -323,6 +322,9 @@ public class PersonalSteps extends Personal {
     }
 
 
+    @Then("Click Date of Birth {string}")
+    public void clickDateOfBirth(String arg0) {
+    }
 }
 
 

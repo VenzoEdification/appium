@@ -1,9 +1,7 @@
 package pages;
 
-import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -36,12 +34,11 @@ public class Signup extends Report {
     @FindBy(how = How.XPATH ,using="//android.view.ViewGroup[@resource-id=\"agree-check\"]/android.widget.ImageView")
     public WebElement agreecheckbox;
 
-    @FindBy(how = How.XPATH ,using="//android.view.ViewGroup[@content-desc='Send code']")
+    @FindBy(how = How.XPATH ,using="//android.view.ViewGroup[@content-desc=\"Send code\"]")
     public WebElement sendcode;
 
-    @FindBy(how = How.XPATH , using = "//android.view.ViewGroup[@content-desc=\"Female\"]/android.view.ViewGroup" )
-    public WebElement GenderFemale;
-
+    @FindBy(how = How.XPATH , using = "//android.widget.TextView[@text=\"Female\"]")
+    public WebElement female;
 
 
     public Signup() throws MalformedURLException {
@@ -73,18 +70,37 @@ public class Signup extends Report {
         return this;
     }
 
-    public Signup SelectDate(String dob) {
-        String[] patterns = {"dd-MM-yyyy", "dd/MM/yyyy", "d-M-yyyy", "d/MM/yyyy"};
-        for (String pattern : patterns) {
+    public Signup SelectDate(String dateip) throws InterruptedException {
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("M/d/yyyy");
+
+        LocalDate targetDate = LocalDate.parse(dateip, inputFormat);
+        LocalDate currentDate = LocalDate.now();
+
+        boolean isPast = targetDate.isBefore(currentDate);
+
+        String formattedDate = targetDate.format(outputFormat);
+        System.out.println(formattedDate+": formattedDate");
+
+        while (true) {
             try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-                LocalDate date = LocalDate.parse(dob, formatter);
-                System.out.println("Parsed DOB: " + date);
-                // your logic to select date here
-                return this;
-            } catch (Exception ignored) {}
+                WebElement datepicker = driver.findElement(
+                        By.xpath("//android.view.View[@content-desc='" + formattedDate + "']")
+                );
+                datepicker.click();
+                break;
+            } catch (Exception e) {
+                if (isPast) {
+                    driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Previous month']")).click();
+                    Thread.sleep(2000);
+                } else {
+                    driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Next month']")).click();
+                }
+                Thread.sleep(500);
+            }
         }
-        throw new RuntimeException("Unsupported date format: " + dob);
+
+        return this;
     }
 
 
@@ -103,8 +119,8 @@ public class Signup extends Report {
     }
     public Signup ChooseGender() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(GenderFemale));
-        GenderFemale.click();
+        wait.until(ExpectedConditions.elementToBeClickable(female));
+        female.click();
         Thread.sleep(3000);
 
         return this;
@@ -115,6 +131,14 @@ public class Signup extends Report {
         mobilenumber.click();
         Thread.sleep(1000);
         mobilenumber.sendKeys(mobile);
+        driver.hideKeyboard();
+        return this;
+    }
+    public Signup ClickAgreeCheckBOx() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(agreecheckbox));
+        agreecheckbox.click();
+
         return this;
     }
 

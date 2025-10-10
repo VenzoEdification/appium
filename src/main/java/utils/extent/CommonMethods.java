@@ -69,5 +69,24 @@ public class CommonMethods {
         }
         return sb.toString();
     }
+    public static String generateMobileNumber() {
+        Random random = new Random();
+        String[] startDigits = {"6", "7", "8", "9"}; // Valid starting digits for Indian mobiles
+        String mobileNumber = startDigits[random.nextInt(startDigits.length)];
+        for (int i = 0; i < 9; i++) {
+            mobileNumber += random.nextInt(10);
+        }
+        return mobileNumber;
+    }
+    public static String generateAadhaarNumber() {
+        Random random = new Random();
+        StringBuilder aadhaarNumber = new StringBuilder();
+        for (int i = 0; i < 12; i++) {
+            aadhaarNumber.append(random.nextInt(10));
+        }
+        return aadhaarNumber.toString();
+    }
+
+
 }
 

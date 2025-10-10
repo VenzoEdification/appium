@@ -1,6 +1,6 @@
 Feature: Signup
 
-  Scenario: SIGNUP
+  Scenario: TC009_Signup
     Given The Talntx Application is launched
     Then Click Signupbutton
     Then Click Name
@@ -8,5 +8,5 @@ Feature: Signup
     Then Enter Date of Birth "DOB"
     Then Select Gender
     Then Enter Mobile Number "Mobile Number"
-    Then click Terms and Agreement
+    Then Click Terms and Agreement
     Then CLick Send Code

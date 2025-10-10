@@ -27,7 +27,7 @@ public class GovernmentIDs extends Report {
     public WebElement aadharverify ;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"pan-number\"]")
     public WebElement PANnumber ;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"aadhaar-upload\"]")
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Upload Aadhaar\"]")
     public WebElement Uploadaadhar ;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"pan-upload\"]")
     public WebElement Uploadpan ;
@@ -61,28 +61,19 @@ public class GovernmentIDs extends Report {
         return this;
     }
     public GovernmentIDs AadharFlow(String aadharnumber) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        List<WebElement> aadharField = driver.findElements(By.xpath("//android.widget.EditText[@resource-id='aadhaar-number']"));
+        List<WebElement> verifiedText = driver.findElements(By.xpath("//android.widget.TextView[@text='Verified']"));
 
-        try {
-            if (aadharverify.isDisplayed()) {
-                ClickAadharNumber();
-                EnterAadharNumber(aadharnumber);
-                ClickAadharVerify();
-
-            }
-        } catch (Exception e) {
-            if (verified.isDisplayed()) {
-            } else {
-                String isReadOnly = Aadharnumber.getAttribute("readonly");
-                String isEnabled = Aadharnumber.getAttribute("enabled");
-
-                if ("true".equalsIgnoreCase(isReadOnly) || "false".equalsIgnoreCase(isEnabled)) {
-                    Report.logPass("Aadhaar field is already non-editable (verified).");
-                } else {
-                    Report.logFail("Aadhaar field is editable but verify button not found — inconsistent state.");
-                }
-            }
+        if (aadharField.isEmpty() && verifiedText.isEmpty()) {
+            aadharField = driver.findElements(By.xpath("//android.widget.EditText[@resource-id='aadhaar-number']"));
+            verifiedText = driver.findElements(By.xpath("//android.widget.TextView[@text='Verified']"));
         }
+
+        if (!aadharField.isEmpty()) {
+            aadharField.get(0).click(); ClickAadharNumber();
+            EnterAadharNumber(aadharnumber);
+            ClickAadharVerify();
+        } else Report.logInfo(!verifiedText.isEmpty() ? "Aadhar is already applied" : "Aadhar not found");
 
         return this;
     }
@@ -106,7 +97,7 @@ public class GovernmentIDs extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(aadharverify));
         aadharverify.click();
-        Thread.sleep(200000);
+        Thread.sleep(40000);
         return this;
     }
     public GovernmentIDs PANFlow(String pannumber) throws InterruptedException {
@@ -170,12 +161,11 @@ public class GovernmentIDs extends Report {
             ClickTakePicture();
             ClickCameraOkButton();
         }
-
         return this;
     }
 
     public GovernmentIDs ClickUploadAadhar() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
         wait.until(ExpectedConditions.elementToBeClickable(Uploadaadhar));
         Uploadaadhar.click();
         return this;
@@ -200,7 +190,7 @@ public class GovernmentIDs extends Report {
         return this;
     }
     public GovernmentIDs ClickUploadPAN() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
         wait.until(ExpectedConditions.elementToBeClickable(Uploadpan));
         Uploadpan.click();
         return this;

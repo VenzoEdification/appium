@@ -120,4 +120,15 @@ public class SignupSteps extends Signup {
             Report.logFail("Failed to Select Gender:" +e.getMessage());
         }
     }
+
+    @Then("Click Terms and Agreement")
+    public void clickTermsAndAgreement() {
+        try {
+
+          ClickAgreeCheckBOx();
+            Report.logInfo("Terms and Condition Check Box is Selected");
+        }catch (Exception e){
+            Report.logFail("Failed to Terms and Condition:" +e.getMessage());
+        }
+    }
 }
