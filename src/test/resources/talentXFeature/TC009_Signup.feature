@@ -10,3 +10,4 @@ Feature: Signup
     Then Enter Mobile Number "Mobile Number"
     Then Click Terms and Agreement
     Then CLick Send Code
+    Then AppClose

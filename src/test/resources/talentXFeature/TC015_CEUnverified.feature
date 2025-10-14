@@ -11,9 +11,9 @@ Feature: Contractor Employer UnVerified
   Scenario: TC015_Contractor UnVerified
     Then Click UnVerified Menu
     Then CLick Incomplete Tab
-    Then CLick TalentName
+    Then CLick IncompleteTalentName
     Then Validate talent Added
-    Then CLick Back Button
+    Then CLick Profile Back Button
     Then Click Yet to be verified tab
-    Then CLick TalentName
+    Then CLick Yet to Verified TalentName
     Then Validate talent Added

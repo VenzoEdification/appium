@@ -96,10 +96,18 @@ public class JobApply extends Report {
             Report.logFail("Job Apply button or Applied status not found");
         }
 
+
         return this;
     }
 
+    public JobApply driverquit() {
+        driver.quit();
+        return this;
+    }
 
-}
+    }
+
+
+
 
 

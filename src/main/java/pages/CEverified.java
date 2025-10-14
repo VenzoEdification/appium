@@ -23,6 +23,10 @@ public class CEverified extends Report {
     public WebElement verified;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Employed0\"]")
     public WebElement Employedname;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"availble0\"]")
+    public WebElement availabletalentname;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Profile-back\"]/android.widget.ImageView")
+    public WebElement profilebackbutton;
     public CEverified()throws MalformedURLException {
         this.driver = SharedDriver.getCapabilities(); // Initialize the driver
         PageFactory.initElements(driver, this);
@@ -31,7 +35,8 @@ public class CEverified extends Report {
     public CEverified ClickEmployed() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement employedTab = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.xpath("//android.view.ViewGroup[starts-with(@content-desc, 'Employed')]")));
+                AppiumBy.xpath("//android.view.View[contains(@content-desc, 'Employed')]/android.view.ViewGroup")));
+
         employedTab.click();
         return this;
     }
@@ -51,9 +56,23 @@ public class CEverified extends Report {
     public CEverified ClickAvailable() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement employedTab = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.xpath("//android.view.ViewGroup[@resource-id='Available')]")));
+                AppiumBy.xpath("//android.view.View[contains(@content-desc, 'Available')]/android.view.ViewGroup")));
+
         employedTab.click();
         return this;
     }
+    public CEverified CLickAvailableTalentName() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(availabletalentname));
+        availabletalentname.click();
+        return this;
+    }
+    public CEverified CLickProfileBackButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(profilebackbutton));
+        profilebackbutton.click();
+        return this;
+    }
+
 
 }

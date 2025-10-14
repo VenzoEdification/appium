@@ -19,3 +19,5 @@ Given The Profile page should display
   Then Click Pincode
   When Enter the Pincode "pincode"
   Then Click Update Button
+  Then Validate talent Added
+  Then AppClose

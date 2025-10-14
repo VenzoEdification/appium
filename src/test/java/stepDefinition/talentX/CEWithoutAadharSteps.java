@@ -1,19 +1,14 @@
 package stepDefinition.talentX;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.CEWithoutAadhar;
 import utils.Excelutil;
 import utils.Report;
-import utils.extent.CommonMethods;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Map;
-
-import static utils.extent.CommonMethods.generateAadhaarNumber;
-import static utils.extent.CommonMethods.generateMobileNumber;
 
 public class CEWithoutAadharSteps extends CEWithoutAadhar {
     private Map<String, String> testData;

@@ -1,15 +1,7 @@
 package utils.extent;
 
-import com.google.gson.internal.bind.JsonTreeReader;
-import org.openqa.selenium.Dimension;
-
 import java.security.SecureRandom;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
-import utils.extent.CommonMethods;
-
-import static utils.SharedDriver.driver;
 
 public class CommonMethods {
     private static final Random random = new Random();

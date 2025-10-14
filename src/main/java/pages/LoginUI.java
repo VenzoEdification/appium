@@ -56,7 +56,7 @@ public class LoginUI extends Report {
     }
 
     public LoginUI EnterMobileNumber(String phoneNumber) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
             wait.until(ExpectedConditions.elementToBeClickable(NumberField));
             NumberField.sendKeys(phoneNumber);
             return this;

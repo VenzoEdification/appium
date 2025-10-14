@@ -10,7 +10,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import utils.Report;
 import utils.SharedDriver;
 import utils.extent.CommonMethods;
@@ -145,10 +144,10 @@ public class CEWithoutAadhar extends Report {
             By talentstatus = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Status-Text\"]");
 
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             wait.until(ExpectedConditions.visibilityOfElementLocated(talentLocator));
 
-            WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(30));
+            WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(20));
             waits.until(ExpectedConditions.visibilityOfElementLocated(talentstatus));
 
             WebElement element = driver.findElement(talentLocator);
@@ -157,7 +156,7 @@ public class CEWithoutAadhar extends Report {
             WebElement elements = driver.findElement(talentstatus);
             String talentStatus = elements.getText();
 
-            Report.logInfo("Viewed Talent Name: " + talentName + " - " +"Talent Status: " +talentStatus);
+            Report.logInfo("Talent Name: " + talentName + " - " +"Talent Status: " +talentStatus);
 
 
         } catch (Exception e) {

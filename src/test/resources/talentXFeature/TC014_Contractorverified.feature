@@ -12,9 +12,9 @@ Feature: Contractor Employer Verified
     Given Homepage should displayed
     Then Click Verified Menu
     Then CLick Available Tab
-    Then CLick TalentName
+    Then CLick AvailableTalentName
     Then Validate talent Added
-    Then CLick Back Button
+    Then CLick Profile Back Button
     Then Click Employed tab
     Then CLick TalentName
     Then Validate talent Added

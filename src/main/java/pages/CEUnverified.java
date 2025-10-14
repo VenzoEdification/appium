@@ -18,10 +18,16 @@ public class CEUnverified  extends Report {
 
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"Unverified-talents\"]")
     public WebElement unverified;
-    @FindBy(how = How.XPATH, using = "//android.view.View[@content-desc=\"Incomplete (166)\"]/android.view.ViewGroup")
+    @FindBy(how = How.XPATH, using = "//android.view.View[contains(@content-desc, 'Incomplete')]/android.view.ViewGroup")
     public WebElement incomplete;
-    @FindBy(how = How.XPATH, using = "//android.widget.TextView[@text=\"Yet To Verified (1)\"]")
+
+    @FindBy(how = How.XPATH, using = "//android.widget.TextView[contains(@text, 'Yet To Verified')]")
     public WebElement yettoverified;
+
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"yet-to-verified0\"]")
+    public WebElement yettoverifiedtalentname;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"incomplete0\"]")
+    public WebElement IncompleteTalentName;
 
     public CEUnverified()throws MalformedURLException {
         this.driver = SharedDriver.getCapabilities(); // Initialize the driver
@@ -43,6 +49,18 @@ public class CEUnverified  extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
         wait.until(ExpectedConditions.elementToBeClickable(yettoverified));
         yettoverified.click();
+        return this;
+    }
+    public CEUnverified ClickyettoVerifiedtalentname() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        wait.until(ExpectedConditions.elementToBeClickable(yettoverifiedtalentname));
+        yettoverifiedtalentname.click();
+        return this;
+    }
+    public CEUnverified Clickincompletetalentname() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        wait.until(ExpectedConditions.elementToBeClickable(IncompleteTalentName));
+        IncompleteTalentName.click();
         return this;
     }
 }

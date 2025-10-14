@@ -46,4 +46,29 @@ public class CEUnverifiedSteps extends CEUnverified {
 
     }
 
+    @Then("CLick IncompleteTalentName")
+    public void clickIncompleteTalentName() {
+        try {
+          Clickincompletetalentname();
+
+            Report.logInfo("Incomplete Talent Name is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click incomplete talent name: " + e.getMessage());
+            throw e;
+        }
+        
+    }
+
+    @Then("CLick Yet to Verified TalentName")
+    public void clickYetToVerifiedTalentName() {
+        try {
+          ClickyettoVerifiedtalentname();
+
+            Report.logInfo("Yet to Verfied Talent name is Clicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click yet to verified: " + e.getMessage());
+            throw e;
+        }
+
+    }
 }

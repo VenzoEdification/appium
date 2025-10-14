@@ -15,5 +15,7 @@ Feature: Contractor Employer With Aadhar
     And Enter AadharNumber "Aadhar Number"
     And Click Confirm Button
     Then Validate talent Added
+    Then AppClose
+
 
 

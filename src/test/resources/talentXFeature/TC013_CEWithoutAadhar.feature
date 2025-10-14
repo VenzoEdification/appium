@@ -17,6 +17,7 @@ Feature: Contractor Employer Without Aadhar
     Then Enter DateofBirth "DOB"
     Then Click Confirm Button
     Then Validate talent Added
+    Then AppClose
 
 
 

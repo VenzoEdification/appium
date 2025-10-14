@@ -36,17 +36,18 @@ public class ContractorandEmployer extends Report {
         contractorandemployertab.click();
         return this;
     }
-    public ContractorandEmployer ClickHistory() {
+    public ContractorandEmployer ClickHistory() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(historybutton));
         historybutton.click();
+        Thread.sleep(2000);
+        historybackbutton.click();
+        Thread.sleep(2000);
         return this;
     }
     public ContractorandEmployer ClickBackButton() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.elementToBeClickable(historybackbutton));
-        historybackbutton.click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(contractorbackbutton));
         contractorbackbutton.click();
         return this;
     }

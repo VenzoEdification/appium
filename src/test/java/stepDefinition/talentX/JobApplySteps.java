@@ -66,4 +66,8 @@ public class JobApplySteps extends JobApply {
 
     }
 
+    @Then("AppClose")
+    public void appclose() {
+      driverquit();
+    }
 }

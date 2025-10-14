@@ -1,14 +1,8 @@
 package pages;
 
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -21,8 +15,6 @@ import utils.extent.CommonMethods;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Personal extends Report {
     AndroidDriver driver;
@@ -154,21 +146,21 @@ public class Personal extends Report {
         Address.clear();
         Address.sendKeys(AddressLine1);
         driver.hideKeyboard();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         return this;
     }
     public Personal ClickCity() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(City));
         City.click();
-        Thread.sleep((3000));
+        Thread.sleep((1000));
         return this;
     }
     public Personal SearchCity() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(searchcity));
         searchcity.click();
-        Thread.sleep((3000));
+        Thread.sleep((1000));
         return this;
     }
     public Personal ClickCityName() throws InterruptedException {

@@ -2,7 +2,6 @@ package stepDefinition.talentX;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.CommandLineArgs;
 import pages.BankAccount;
 import utils.Excelutil;
 import utils.Report;

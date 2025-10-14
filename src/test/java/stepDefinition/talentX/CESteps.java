@@ -25,7 +25,7 @@ public class CESteps extends ContractorandEmployer {
     }
 
     @Then("CLick History Button")
-    public void click_history_button() {
+    public void click_history_button() throws InterruptedException {
         try {
             ClickHistory();
             Report.logInfo("History Button is Clicked");

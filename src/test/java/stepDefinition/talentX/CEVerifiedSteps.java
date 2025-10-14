@@ -42,7 +42,7 @@ public class CEVerifiedSteps extends CEverified {
     public void c_lick_talent_name() {
         try {
            CLickEmployedName();
-            Report.logInfo("Talent Name is Clicked ");
+            Report.logInfo(" Employed Talent Name is Clicked ");
         } catch (Exception e) {
             Report.logFail("Failed to click Talent Name : " + e.getMessage());
             throw e;
@@ -57,6 +57,30 @@ public class CEVerifiedSteps extends CEverified {
             Report.logInfo("Available Tab is CLicked");
         } catch (Exception e) {
             Report.logFail("Failed to click available tab: " + e.getMessage());
+            throw e;
+        }
+
+    }
+
+    @Then("CLick AvailableTalentName")
+    public void clickAvailableTalentName() {
+        try {
+            CLickAvailableTalentName();
+            Report.logInfo("Available Talent Name is CLicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click available tab: " + e.getMessage());
+            throw e;
+        }
+
+    }
+
+    @Then("CLick Profile Back Button")
+    public void clickProfileBackButton() {
+        try {
+        CLickProfileBackButton();
+            Report.logInfo("Profile Back Button is CLicked");
+        } catch (Exception e) {
+            Report.logFail("Failed to click back button: " + e.getMessage());
             throw e;
         }
 
