@@ -47,6 +47,7 @@ public class CEWithAadhar extends Report {
         mobilenumber.click();
         Thread.sleep(500);
         mobilenumber.sendKeys(MobileNumber);
+        driver.hideKeyboard();
         return this;
 
     }
@@ -56,6 +57,7 @@ public class CEWithAadhar extends Report {
         aadharinput.click();
         Thread.sleep(500);
         aadharinput.sendKeys(aadhar);
+        driver.hideKeyboard();
         return this;
 
     }
@@ -63,7 +65,7 @@ public class CEWithAadhar extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(confirm));
         confirm.click();
-        Thread.sleep(2000);
+        Thread.sleep(55000);
         return this;
     }
     public CEWithAadhar ClickWithAadhar() {

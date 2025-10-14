@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Map;
 
+import static utils.extent.CommonMethods.generateAadhaarNumber;
+import static utils.extent.CommonMethods.generateMobileNumber;
+
 public class CEWithoutAadharSteps extends CEWithoutAadhar {
     private Map<String, String> testData;
 
@@ -37,14 +40,8 @@ public class CEWithoutAadharSteps extends CEWithoutAadhar {
 
     @Then("Enter mobileNumber")
     public void enter_mobile_number() throws IOException, InterruptedException {
-        try{
-            EnterMobileNumber();
-            Report.logInfo("Entered Mobile Number :" + CommonMethods.generateMobileNumber());
 
-        } catch (Exception e) {
-            Report.logInfo("Failed to enter mobile number: "+ e.getMessage());
-            throw e;
-        }
+            EnterMobileNumber();
 
 
     }
@@ -52,14 +49,8 @@ public class CEWithoutAadharSteps extends CEWithoutAadhar {
 
     @Then("Enter aadharNumber")
     public void enter_aadhar_number() throws InterruptedException {
-        try{
             EnterAadharNumber();
-            Report.logInfo("Entered Aadhar Number :" +CommonMethods.generateAadhaarNumber() );
 
-        } catch (Exception e) {
-            Report.logInfo("Failed to enter aadhar number: "+ e.getMessage());
-            throw e;
-        }
         }
     @Then("Enter TalentName {string}")
     public void enter_talent_name(String key) throws InterruptedException {
@@ -80,9 +71,8 @@ public class CEWithoutAadharSteps extends CEWithoutAadhar {
     public void enter_dateof_birth(String key) throws InterruptedException {
         try{
             String value = testData.get(key);
-            ClickcalenderIcon();
             Report.logInfo("Calendar Icon is Clicked");
-            SelectDate(value);
+            enterDOB(value);
             Report.logInfo("Entered Date of Birth:" +value);
             ClickcalenderOk();
             Report.logInfo("Ok Button is clicked");
@@ -95,13 +85,34 @@ public class CEWithoutAadharSteps extends CEWithoutAadhar {
 
 
     @Then("Click Without AadharNumber")
-    public void click_without_aadhar_number() {
+    public void click_without_aadhar_number() throws InterruptedException {
         try{
-         ClickWithoutAadhar();
+         clickWithoutAadhar();
             Report.logInfo("Without Aadhar number is Clicked " );
 
         } catch (Exception e) {
             Report.logInfo("Failed to click without aadhar number:"+ e.getMessage());
+            throw e;
+        }
+
+    }
+
+    @Then("Validate talent Added")
+    public void validateTalentAdded() {
+
+            ValidateTalent();
+
+
+    }
+
+    @Then("Select gender")
+    public void selectGender() {
+        try{
+            Selectgender();
+            Report.logInfo("Gender is Selected");
+
+        } catch (Exception e) {
+            Report.logInfo("Failed to select gender:"+ e.getMessage());
             throw e;
         }
 

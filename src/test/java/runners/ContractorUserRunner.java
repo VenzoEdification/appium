@@ -5,8 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = {
-                "src/test/resources/talentXFeature/TC011_ContractorLogin.feature",
-                "src/test/resources/talentXFeature/TC013_CEWithoutAadhar.feature"
+                "src/test/resources/talentXFeature/TC014_Contractorverified.feature"
 
         },
         glue = {"stepDefinition/talentX", "hooks"},
