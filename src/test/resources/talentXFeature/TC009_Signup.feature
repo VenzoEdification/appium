@@ -6,7 +6,6 @@ Feature: Signup
     Then Click Name
     When Enter Name "Name"
     Then Enter Date of Birth "DOB"
-    Then Select Gender
     Then Enter Mobile Number "Mobile Number"
     Then Click Terms and Agreement
     Then CLick Send Code

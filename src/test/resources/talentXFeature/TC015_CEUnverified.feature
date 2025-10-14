@@ -17,3 +17,4 @@ Feature: Contractor Employer UnVerified
     Then Click Yet to be verified tab
     Then CLick Yet to Verified TalentName
     Then Validate talent Added
+    Then AppClose

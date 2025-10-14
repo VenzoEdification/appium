@@ -26,8 +26,9 @@ public class CEWithoutAadhar extends Report {
     public WebElement mobilenumber;
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"Aadhaar-input\"]")
     public WebElement aadharinput;
-    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[android.widget.TextView[@text='Without Aadhar Verification']]/android.view.ViewGroup")
-    public WebElement aadharwithout;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[contains(@content-desc, 'Without Aadhar Verification')]/android.view.ViewGroup")
+    public WebElement withoutAadharVerification;
+
     @FindBy(how = How.XPATH, using = "//android.widget.EditText[@resource-id=\"Name-input\"]")
     public WebElement name;
     @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@resource-id=\"DobButton\"]")
@@ -71,9 +72,10 @@ public class CEWithoutAadhar extends Report {
 
     public CEWithoutAadhar clickWithoutAadhar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(withoutAadharVerification));
+        withoutAadharVerification.click();
 
 
-        driver.findElement(MobileBy.id("Aadhaar-Without Aadhar Verification")).click();
 
         // driver.findElement(AppiumBy.accessibilityId("Without Aadhar Verification")).click();
         return this;

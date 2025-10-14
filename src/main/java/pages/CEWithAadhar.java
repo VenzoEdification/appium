@@ -65,7 +65,7 @@ public class CEWithAadhar extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(confirm));
         confirm.click();
-        Thread.sleep(55000);
+        Thread.sleep(65000);
         return this;
     }
     public CEWithAadhar ClickWithAadhar() {

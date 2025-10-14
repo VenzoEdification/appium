@@ -18,6 +18,7 @@ Feature: Contractor Employer Verified
     Then Click Employed tab
     Then CLick TalentName
     Then Validate talent Added
+    Then AppClose
 
 
 

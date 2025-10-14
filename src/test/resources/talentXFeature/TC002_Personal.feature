@@ -2,9 +2,8 @@ Feature: Personal Details
 
   Scenario: TC002_Personal Details
     Given The Profile Details is visible
-
-    Then Click Personal Tab
     Then Validate talent Added
+    Then Click Personal Tab
     Then Click Nationality
     Then Click Indian
     Then Click Blood Group
