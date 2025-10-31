@@ -37,6 +37,8 @@ public class CEWithoutAadhar extends Report {
     public WebElement CalenderOk;
     @FindBy(how = How.XPATH, using = "//android.widget.TextView[@resource-id=\"genderRadioButton-Female\"]/ancestor::android.view.ViewGroup[@clickable=\"true\"]\n")
     public WebElement gender;
+    @FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Confirm\"]")
+    public WebElement confirm;
 
 
     public CEWithoutAadhar() throws MalformedURLException {
@@ -165,6 +167,12 @@ public class CEWithoutAadhar extends Report {
             Report.logFail("Failed to get viewed talent name: " + e.getMessage());
             throw e;
         }
+        return this;
+    }
+    public CEWithoutAadhar ClickConfirmButton() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(confirm));
+        confirm.click();
         return this;
     }
 }

@@ -5,10 +5,10 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = {
-               // "src/test/resources/talentXFeature/TC012_CEWithAadhar.feature"
-             // "src/test/resources/talentXFeature/TC013_CEWithoutAadhar.feature"
-             //   "src/test/resources/talentXFeature/TC014_COntractorverified.feature"
-               "src/test/resources/talentXFeature/TC015_CEUnverified.feature"
+                "src/test/resources/talentXFeature/TC012_CEWithAadhar.feature"
+            //  "src/test/resources/talentXFeature/TC013_CEWithoutAadhar.feature"
+           //   "src/test/resources/talentXFeature/TC014_Contractorverified.feature"
+              // "src/test/resources/talentXFeature/TC015_CEUnverified.feature"
 
 
         },

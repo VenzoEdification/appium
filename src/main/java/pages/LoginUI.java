@@ -93,7 +93,7 @@ public class LoginUI extends Report {
     public LoginUI ClickVerifyButton() throws InterruptedException {
         clickverify.click();
         Thread.sleep(3000);
-        remainderok.click();
+        //remainderok.click();
         return this;
     }
     public LoginUI ClickMyAccount() throws InterruptedException {

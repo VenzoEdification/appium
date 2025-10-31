@@ -1,6 +1,8 @@
 package pages;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -12,6 +14,8 @@ import utils.SharedDriver;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+
+import static utils.SharedDriver.driver;
 
 public class CEWithAadhar extends Report {
     private AndroidDriver driver;
@@ -65,18 +69,54 @@ public class CEWithAadhar extends Report {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(confirm));
         confirm.click();
-        Thread.sleep(65000);
-        return this;
+        Thread.sleep(50000);
+                return this;
     }
+public CEWithAadhar Clickverifybutton() throws InterruptedException {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+    Thread.sleep(15000);
+    wait.until(ExpectedConditions.elementToBeClickable(verify));
+    verify.click();
+
+    return this;
+}
     public CEWithAadhar ClickWithAadhar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(aadharwith));
         aadharwith.click();
         return this;
     }
+    public CEWithAadhar ValidateTalent() {
+        try {
+            By talentLocator = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Name\"]");
+            By talentstatus = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Status-Text\"]");
 
 
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(talentLocator));
+
+            WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(20));
+            waits.until(ExpectedConditions.visibilityOfElementLocated(talentstatus));
+
+            WebElement element = driver.findElement(talentLocator);
+            String talentName = element.getText();
+
+            WebElement elements = driver.findElement(talentstatus);
+            String talentStatus = elements.getText();
+
+            Report.logInfo("Talent Name: " + talentName + " - " +"Talent Status: " +talentStatus);
 
 
+        } catch (Exception e) {
+            Report.logFail("Failed to get viewed talent name: " + e.getMessage());
+            throw e;
+        }
+return this;
+    }
 }
+
+
+
+
+
 

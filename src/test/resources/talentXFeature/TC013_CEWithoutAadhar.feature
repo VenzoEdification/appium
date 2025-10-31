@@ -15,7 +15,7 @@ Feature: Contractor Employer Without Aadhar
     And Enter aadharNumber
     Then Enter TalentName "Name"
     Then Enter DateofBirth "DOB"
-    Then Click Confirm Button
+    Then Click WithoutConfirm Button
     Then Validate talent Added
     Then AppClose
 
