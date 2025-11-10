@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.AppiumBy;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,8 +14,6 @@ import utils.SharedDriver;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
-
-import static utils.SharedDriver.driver;
 
 public class CEWithAadhar extends Report {
     private AndroidDriver driver;
@@ -88,8 +86,8 @@ public CEWithAadhar Clickverifybutton() throws InterruptedException {
     }
     public CEWithAadhar ValidateTalent() {
         try {
-            By talentLocator = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Name\"]");
-            By talentstatus = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Status-Text\"]");
+            By talentLocator = MobileBy.xpath("//android.widget.TextView[@resource-id=\"Name\"]");
+            By talentstatus = MobileBy.xpath("//android.widget.TextView[@resource-id=\"Status-Text\"]");
 
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));

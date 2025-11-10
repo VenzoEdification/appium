@@ -1,6 +1,7 @@
 package pages;
 
-import io.appium.java_client.AppiumBy;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +36,7 @@ public class CEverified extends Report {
     public CEverified ClickEmployed() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement employedTab = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.xpath("//android.view.View[contains(@content-desc, 'Employed')]/android.view.ViewGroup")));
+                MobileBy.xpath("//android.view.View[contains(@content-desc, 'Employed')]/android.view.ViewGroup")));
 
         employedTab.click();
         return this;
@@ -56,7 +57,7 @@ public class CEverified extends Report {
     public CEverified ClickAvailable() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement employedTab = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.xpath("//android.view.View[contains(@content-desc, 'Available')]/android.view.ViewGroup")));
+                MobileBy.xpath("//android.view.View[contains(@content-desc, 'Available')]/android.view.ViewGroup")));
 
         employedTab.click();
         return this;

@@ -13,6 +13,7 @@ Feature: Contractor Employer Without Aadhar
     Then Click Add Talent Icon
     And Enter mobileNumber
     And Enter aadharNumber
+    And Click Without AadharNumber
     Then Enter TalentName "Name"
     Then Enter DateofBirth "DOB"
     Then Click WithoutConfirm Button

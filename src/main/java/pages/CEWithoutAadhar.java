@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.AppiumBy;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
@@ -79,7 +79,7 @@ public class CEWithoutAadhar extends Report {
 
 
 
-        // driver.findElement(AppiumBy.accessibilityId("Without Aadhar Verification")).click();
+        // driver.findElement(MobileBy.accessibilityId("Without Aadhar Verification")).click();
         return this;
     }
 
@@ -144,8 +144,8 @@ public class CEWithoutAadhar extends Report {
 
     public CEWithoutAadhar ValidateTalent() {
         try {
-            By talentLocator = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Name\"]");
-            By talentstatus = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"Status-Text\"]");
+            By talentLocator = MobileBy.xpath("//android.widget.TextView[@resource-id=\"Name\"]");
+            By talentstatus = MobileBy.xpath("//android.widget.TextView[@resource-id=\"Status-Text\"]");
 
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));

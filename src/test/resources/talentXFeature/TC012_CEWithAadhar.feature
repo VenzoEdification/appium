@@ -13,6 +13,7 @@ Feature: Contractor Employer With Aadhar
     Then Click Add Talent Icon
     And Enter MobileNumber "Mobile Number"
     And Enter AadharNumber "Aadhar Number"
+    And CLick With Aadhar Button
     And Click Confirm Button
     Then Aadhar Validate talent Added
     Then AppClose
