@@ -1,6 +1,5 @@
 package stepDefinition.talentX;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.CEWithAadhar;
@@ -104,22 +103,6 @@ public class CEWithAadharSteps extends CEWithAadhar {
 
     }
 
-    @Then("Aadhar Validate talent Added")
-    public void aadharValidateTalentAdded() {
-        ValidateTalent();
     }
-
-    @And("Click WithAadhar Verify")
-    public void clickWithAadharVerify() throws InterruptedException {
-        try {
-          Clickverifybutton();
-            Report.logInfo("With Aadhar Button is Clicked");
-        } catch (Exception e) {
-            Report.logFail("Failed to Click with aadhar: " + e.getMessage());
-            throw e;
-        }
-
-    }
-}
 
 

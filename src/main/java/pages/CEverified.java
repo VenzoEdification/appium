@@ -1,7 +1,4 @@
 package pages;
-
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Report;
 import utils.SharedDriver;
+import io.appium.java_client.AppiumBy;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -36,7 +34,7 @@ public class CEverified extends Report {
     public CEverified ClickEmployed() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement employedTab = wait.until(ExpectedConditions.elementToBeClickable(
-                MobileBy.xpath("//android.view.View[contains(@content-desc, 'Employed')]/android.view.ViewGroup")));
+                AppiumBy.xpath("//android.view.ViewGroup[starts-with(@content-desc, 'Employed')]")));
 
         employedTab.click();
         return this;
@@ -57,7 +55,7 @@ public class CEverified extends Report {
     public CEverified ClickAvailable() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement employedTab = wait.until(ExpectedConditions.elementToBeClickable(
-                MobileBy.xpath("//android.view.View[contains(@content-desc, 'Available')]/android.view.ViewGroup")));
+                AppiumBy.xpath("//android.view.ViewGroup[@resource-id='Available')]")));
 
         employedTab.click();
         return this;

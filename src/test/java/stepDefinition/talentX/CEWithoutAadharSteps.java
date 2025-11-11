@@ -112,16 +112,4 @@ public class CEWithoutAadharSteps extends CEWithoutAadhar {
         }
 
     }
-
-    @Then("Click WithoutConfirm Button")
-    public void clickWithoutConfirmButton() throws InterruptedException {
-        try {
-            ClickConfirmButton();
-            Report.logInfo("Confirm Button is Clicked");
-        } catch (Exception e) {
-            Report.logFail("Failed to Click confirm: " + e.getMessage());
-            throw e;
-        }
-
-    }
 }
